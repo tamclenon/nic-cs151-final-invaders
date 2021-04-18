@@ -1,0 +1,1 @@
+This folder will contain only the application's source files (.cpp files)

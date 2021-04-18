@@ -1,0 +1,1 @@
+This folder will contain any libraries that get compiled by the project

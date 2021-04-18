@@ -5,7 +5,7 @@
 #include <SFML/Audio.hpp>
 
 
-int main(int argc, char *argv[])
+int main()
 {
-	std::cout << "Hello world!" << std::endl;
+	
 }
