@@ -1,6 +1,7 @@
 #include "game.h"
 
 
+
 Game::Game()
 {
     defaultSize.x = 640;
@@ -28,7 +29,8 @@ void Game::input()
         {
             if ((event.key.code == sf::Keyboard::F10) && (window.getSize() == defaultSize))
             {
-                window.create(sf::VideoMode::getFullscreenModes()[0], "Space Invaders", sf::Style::Fullscreen);
+                window.create(sf::VideoMode::getFullscreenModes()[0], "Space Invaders",
+                                        sf::Style::Fullscreen);
             }
             else if (event.key.code == sf::Keyboard::F10)
             {
