@@ -1,11 +1,17 @@
-#include <iostream>
-#include <SFML/System.hpp>
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
+#include "game.h"
+
 
 
 int main()
 {
+	Game game;
+
+	while (!game.isFinished())
+	{
+		game.input();
+		game.update();
+		game.render();
+	}
 	
+	return 0;
 }
