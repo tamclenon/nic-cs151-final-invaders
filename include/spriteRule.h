@@ -35,6 +35,7 @@ private:
     string type;
     int health;
     spriteDemention hitBox; 
+    spriteDemention image[2];
 };
 
 #endif

@@ -18,7 +18,7 @@ LFLAGS = -lsfml-system -lsfml-graphics -lsfml-window -lsfml-audio
 OUTPUT	:= bin
 
 # define source directory
-SRC		:= src
+SRC		:= src test
 
 # define include directory
 INCLUDE	:= include
