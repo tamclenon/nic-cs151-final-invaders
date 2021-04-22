@@ -55,4 +55,3 @@ bool Game::isFinished()
 {
     return (!window.isOpen() || isDone);
 }
-

@@ -1,2 +1,0 @@
-This folder will contain files that 
-are used by the main executable (files such as images or audio)
