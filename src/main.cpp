@@ -8,14 +8,13 @@ using namespace std;
 int main()
 {
 	cout << SPRITE_IMAGES[0][0].spriteX << ' ' << SPRITE_IMAGES[0][0].spriteY << '\n';
-	// Game game;
+	Game game;
 
-	// while (!game.isFinished())
-	// {
-	// 	game.input();
-	// 	game.update();
-	// 	game.render();
-	// }
+	while (!game.isFinished())
+	{
+		game.update();
+		game.render();
+	}
 	
 	return 0;
 }

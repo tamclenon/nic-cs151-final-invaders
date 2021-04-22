@@ -1,0 +1,1 @@
+This folder will store files used by the program (i.e. images, audio)
