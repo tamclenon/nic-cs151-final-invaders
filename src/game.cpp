@@ -41,7 +41,7 @@ void Game::input()
 
 void Game::update()
 {
-    
+    input();
 }
 
 void Game::render()
