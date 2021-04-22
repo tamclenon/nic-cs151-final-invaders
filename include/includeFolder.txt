@@ -1,2 +1,0 @@
-This folder will contain any project creator header files,
-as well as any third party header files (e.g. SFML's .hpp header files)
