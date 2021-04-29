@@ -14,15 +14,17 @@ struct spriteDemention
     int spriteX;
     int spriteY;
 
-    spriteDemention(int x = 1, int y = 1)
+    spriteDemention(int x = 0, int y = 0)
     {
-        x > 0 ? spriteX = x : spriteX = 1;
-        y > 0 ? spriteY = y : spriteY = 1;
+        x >= 0 ? spriteX = x : spriteX = 0;
+        y >= 0 ? spriteY = y : spriteY = 0;
     }
 };
 
-string SPRITE_TYPES[] = {"player", "saucer", "enemy1", "enemy2", "enemy3"};
-spriteDemention SPRITE_IMAGES[][2] = {{spriteDemention(0,0), spriteDemention(50,50)}, 
+enum TYPE {player, saucer, enemy1, enemy2, enemy3};
+const int NUM_TYPES = 5;
+const string SPRITE_TYPES[] = {"player", "saucer", "enemy1", "enemy2", "enemy3"};
+const spriteDemention SPRITE_IMAGES[][2] = {{spriteDemention(0,0), spriteDemention(50,50)}, 
                                       {spriteDemention(50,0), spriteDemention(50,50)}, 
                                       {spriteDemention(), spriteDemention()}, 
                                       {spriteDemention(), spriteDemention()}, 
@@ -31,14 +33,14 @@ spriteDemention SPRITE_IMAGES[][2] = {{spriteDemention(0,0), spriteDemention(50,
 class Sprite : public sf::Sprite
 {
 public:
-    Sprite();
+    Sprite(int type);
     ~Sprite();
     void loadTexture(string file);
 
 protected:
-    string type;
+    string spriteType;
     int health;
-    spriteDemention hitBox; 
+    spriteDemention hitBox;
     spriteDemention image[2];
     Texture texture;
 private:
