@@ -1,8 +1,13 @@
 #ifndef SPRITERULE_H
 #define SPRITERULE_H
 
+#include <SFML/Graphics.hpp>
+
 #include <string>
 using std::string;
+
+using sf::Texture;
+using sf::IntRect;
 
 struct spriteDemention
 {
@@ -17,25 +22,26 @@ struct spriteDemention
 };
 
 string SPRITE_TYPES[] = {"player", "saucer", "enemy1", "enemy2", "enemy3"};
-spriteDemention SPRITE_IMAGES[][2] = {{spriteDemention(), spriteDemention()}, 
-                                      {spriteDemention(), spriteDemention()}, 
+spriteDemention SPRITE_IMAGES[][2] = {{spriteDemention(0,0), spriteDemention(50,50)}, 
+                                      {spriteDemention(50,0), spriteDemention(50,50)}, 
                                       {spriteDemention(), spriteDemention()}, 
                                       {spriteDemention(), spriteDemention()}, 
                                       {spriteDemention(), spriteDemention()}};
 
-class Sprite
+class Sprite : public sf::Sprite
 {
 public:
     Sprite();
     ~Sprite();
+    void loadTexture(string file);
 
 protected:
-
-private:
     string type;
     int health;
     spriteDemention hitBox; 
     spriteDemention image[2];
+    Texture texture;
+private:
+    
 };
-
 #endif

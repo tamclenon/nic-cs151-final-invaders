@@ -1,12 +1,13 @@
 #include "game.h"
+#include "spriteRule.h"
 
 
 Game::Game()
 {
     defaultSize.x = 640;
 	defaultSize.y = 360;
-    window.create(sf::VideoMode(defaultSize.x, defaultSize.y), "Space Invaders",
-								sf::Style::Titlebar | sf::Style::Close);
+    window.create(VideoMode(defaultSize.x, defaultSize.y), "Space Invaders",
+								Titlebar | Close);
 
     isDone = false;
 }
@@ -18,22 +19,22 @@ Game::~Game()
 
 void Game::input()
 {
-    sf::Event event;
+    Event event;
     while (window.pollEvent(event))
     {
-        if (event.type == sf::Event::Closed)
+        if (event.type == Event::Closed)
             window.close();
         
-        if (event.type == sf::Event::KeyPressed)
+        if (event.type == Event::KeyPressed)
         {
-            if ((event.key.code == sf::Keyboard::F10) && (window.getSize() == defaultSize))
+            if ((event.key.code == Keyboard::F10) && (window.getSize() == defaultSize))
             {
-                window.create(sf::VideoMode::getFullscreenModes()[0], "Space Invaders", sf::Style::Fullscreen);
+                window.create(VideoMode::getFullscreenModes()[0], "Space Invaders", Fullscreen);
             }
-            else if (event.key.code == sf::Keyboard::F10)
+            else if (event.key.code == Keyboard::F10)
             {
-                window.create(sf::VideoMode(defaultSize.x, defaultSize.y), "Space Invaders",
-                                        sf::Style::Titlebar | sf::Style::Close);
+                window.create(VideoMode(defaultSize.x, defaultSize.y), "Space Invaders",
+                                        Titlebar | Close);
             }
         }
     }
@@ -47,11 +48,17 @@ void Game::update()
 void Game::render()
 {
     window.clear();
-    //window.draw();
+    for (Sprite &sprite : sDraw)
+        window.draw(sprite);
     window.display();
 }
 
 bool Game::isFinished()
 {
     return (!window.isOpen() || isDone);
+}
+
+void Game::addDraw(Sprite spr)
+{
+    sDraw.push_back(spr);
 }

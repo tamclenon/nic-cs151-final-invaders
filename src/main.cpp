@@ -1,14 +1,18 @@
 #include "game.h"
-#include "spriteRule.h"
 #include <iostream>
 using namespace std;
 
 
 
+
 int main()
 {
-	cout << SPRITE_IMAGES[0][0].spriteX << ' ' << SPRITE_IMAGES[0][0].spriteY << '\n';
+	string textureFile = "data/Sprite_Texture_Sheet_150x150.png";
 	Game game;
+
+	Sprite sprite;
+	sprite.loadTexture(textureFile);
+	game.addDraw(sprite);
 
 	while (!game.isFinished())
 	{
