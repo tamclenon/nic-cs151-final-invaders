@@ -1,4 +1,5 @@
 #include "game.h"
+#include "enemyLogic.h"
 #include <iostream>
 using namespace std;
 
@@ -10,7 +11,7 @@ int main()
 	string textureFile = "data/Sprite_Texture_Sheet_150x150.png";
 	Game game;
 
-	Sprite sprite(player);
+	Enemy sprite(player);
 	sprite.loadTexture(textureFile);
 	game.addDraw(sprite);
 
