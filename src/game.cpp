@@ -23,7 +23,6 @@ void Game::input()
     Event event;
     while (window.pollEvent(event))
     {
-        cout << event.type << endl;
         if ((event.type == Event::Closed) || (event.type == Event::KeyPressed && event.key.code == Keyboard::Escape))
         {
             window.close();
