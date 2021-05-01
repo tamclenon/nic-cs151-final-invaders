@@ -1,4 +1,6 @@
 #include "game.h"
+#include <iostream>
+using namespace std;
 
 
 Game::Game()
@@ -21,9 +23,12 @@ void Game::input()
     Event event;
     while (window.pollEvent(event))
     {
-        if (event.type == Event::Closed)
+        cout << event.type << endl;
+        if ((event.type == Event::Closed) || (event.type == Event::KeyPressed && event.key.code == Keyboard::Escape))
+        {
             window.close();
-        
+            isDone = false;
+        }
         if (event.type == Event::KeyPressed)
         {
             if ((event.key.code == Keyboard::F10) && (window.getSize() == defaultSize))
