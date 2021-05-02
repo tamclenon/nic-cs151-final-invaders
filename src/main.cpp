@@ -11,11 +11,9 @@ using namespace std;
 
 int main()
 {
-	string textureFile = "data/Sprite_Texture_Sheet_150x150.png";
 	Game game;
 
 	Enemy sprite(enemy1);
-	sprite.loadTexture(textureFile);
 	game.addDraw(sprite);
 
 	const sf::Time TIME_PER_FRAME = sf::seconds(1.f / 60.f);
