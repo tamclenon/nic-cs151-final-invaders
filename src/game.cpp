@@ -5,12 +5,15 @@ using namespace std;
 
 Game::Game()
 {
-    defaultSize.x = 640;
-	defaultSize.y = 360;
+    defaultSize.x = 650;
+	defaultSize.y = 350;
     window.create(VideoMode(defaultSize.x, defaultSize.y), "Space Invaders",
 								Titlebar | Close);
+    // window.setMouseCursorGrabbed(true);
 
     isDone = false;
+    const VideoMode &vid = VideoMode::getDesktopMode();
+    cout << vid.width << ',' << vid.height << endl;
 }
 
 Game::~Game()
@@ -32,12 +35,26 @@ void Game::input()
         {
             if ((event.key.code == Keyboard::F10) && (window.getSize() == defaultSize))
             {
-                window.create(VideoMode::getFullscreenModes()[0], "Space Invaders", Fullscreen);
+                Vector2f scaled;
+                scaled.x = window.getSize().x;
+                scaled.y = window.getSize().y;
+                window.create(VideoMode::getDesktopMode(), "Space Invaders", Fullscreen);
+                scaled.x = window.getSize().x / scaled.x;
+                scaled.y = window.getSize().y / scaled.y;
+                for (Sprite &sprite : sDraw)
+                    sprite.scale(scaled);
             }
             else if (event.key.code == Keyboard::F10)
             {
+                Vector2f scaled;
+                scaled.x = window.getSize().x;
+                scaled.y = window.getSize().y;
                 window.create(VideoMode(defaultSize.x, defaultSize.y), "Space Invaders",
                                         Titlebar | Close);
+                scaled.x = window.getSize().x / scaled.x;
+                scaled.y = window.getSize().y / scaled.y;
+                for (Sprite &sprite : sDraw)
+                    sprite.scale(scaled);
             }
         }
     }
@@ -50,9 +67,12 @@ void Game::update()
 
 void Game::render()
 {
-    window.clear();
+    // window.clear();
     for (Sprite &sprite : sDraw)
+    {
+        window.draw(*sprite.shadowSprite);
         window.draw(sprite);
+    }
     window.display();
 }
 
