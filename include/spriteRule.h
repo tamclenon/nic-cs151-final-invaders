@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 #include <string>
+#include <iostream>
 using std::string;
 
 using sf::Texture;
@@ -37,8 +38,8 @@ const spriteDemention SPRITE_IMAGES[] = {spriteDemention(0,0,50,50),
 class Sprite : public sf::Sprite
 {
 public:
-    Sprite(int type);
-    ~Sprite();
+    Sprite(int type = player);
+    virtual ~Sprite();
     void loadTexture(string file);
 
 protected:

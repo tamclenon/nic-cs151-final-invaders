@@ -1,5 +1,6 @@
 #include "game.h"
 #include "enemyLogic.h"
+#include "player.h"
 
 #include <time.h>
 #include <unistd.h>
@@ -14,9 +15,13 @@ int main()
 	string textureFile = "data/Sprite_Texture_Sheet_150x150.png";
 	Game game;
 
-	Enemy sprite(enemy1);
-	sprite.loadTexture(textureFile);
-	game.addDraw(sprite);
+	//Enemy sprite(enemy1);
+	//sprite.loadTexture(textureFile);
+	//game.addDraw(sprite);
+
+	Sprite* playerS = new Player(0, game);
+	playerS->loadTexture(textureFile);
+	game.addDraw(playerS);
 
 	const sf::Time TIME_PER_FRAME = sf::seconds(1.f / 60.f);
     sf::Clock clock; // starts the clock
@@ -40,12 +45,13 @@ int main()
 		while (timeSinceLastUpdate > TIME_PER_FRAME)
         {
             timeSinceLastUpdate -= TIME_PER_FRAME;
-            game.update();
+            game.update(playerS);
 			++updates;
         }
 		game.render();
 		++fps;
 	}
+	delete playerS;
 	
 	return 0;
 }

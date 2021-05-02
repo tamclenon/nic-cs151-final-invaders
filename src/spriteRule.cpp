@@ -1,5 +1,4 @@
 #include "spriteRule.h"
-#include <iostream>
 using namespace std;
 
 Sprite::Sprite(int type)

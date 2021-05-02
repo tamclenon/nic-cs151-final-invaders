@@ -28,19 +28,20 @@ public:
     Game();
     virtual ~Game();
 
-    void input();
-    void update();
+    void input(Sprite* sprite);
+    void update(Sprite* sprite);
     void render();
     bool isFinished();
 
-    void addDraw(Sprite spr);
-
+    void addDraw(Sprite* spr);
+    RenderWindow window;
+    Vector2u windowScale;
 
 private:
-    RenderWindow window;
+    
     Vector2u defaultSize;
     bool    isDone;
-    vector<Sprite> sDraw;
+    vector<Sprite*> sDraw;
 
 };
 
