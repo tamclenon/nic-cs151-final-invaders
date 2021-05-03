@@ -1,19 +1,21 @@
 #include "game.h"
+#include "player.h"
 #include <iostream>
 using namespace std;
 
 
+
 Game::Game()
 {
-    defaultSize.x = 650;
-	defaultSize.y = 350;
-    window.create(VideoMode(defaultSize.x, defaultSize.y), "Space Invaders",
+    defaultSize = VideoMode(650, 350);
+    
+    fullSize = sf::VideoMode::getDesktopMode();
+
+    window.create(defaultSize, "Space Invaders",
 								Titlebar | Close);
     // window.setMouseCursorGrabbed(true);
 
     isDone = false;
-    const VideoMode &vid = VideoMode::getDesktopMode();
-    cout << vid.width << ',' << vid.height << endl;
 }
 
 Game::~Game()
@@ -33,28 +35,26 @@ void Game::input()
         }
         if (event.type == Event::KeyPressed)
         {
-            if ((event.key.code == Keyboard::F10) && (window.getSize() == defaultSize))
+            if ((event.key.code == Keyboard::F10) && (!fullScreen))
             {
-                Vector2f scaled;
-                scaled.x = window.getSize().x;
-                scaled.y = window.getSize().y;
-                window.create(VideoMode::getDesktopMode(), "Space Invaders", Fullscreen);
-                scaled.x = window.getSize().x / scaled.x;
-                scaled.y = window.getSize().y / scaled.y;
-                for (Sprite &sprite : sDraw)
-                    sprite.scale(scaled);
+                ++fullScreen;
+                window.create(fullSize, "Space Invaders", Fullscreen);
+                windowScale.x = fullSize.width / defaultSize.width;
+                windowScale.y = fullSize.height / defaultSize.height;
+                for (Sprite *sprite : sDraw)
+                    sprite->scale(windowScale);
             }
             else if (event.key.code == Keyboard::F10)
             {
-                Vector2f scaled;
-                scaled.x = window.getSize().x;
-                scaled.y = window.getSize().y;
-                window.create(VideoMode(defaultSize.x, defaultSize.y), "Space Invaders",
+                fullScreen = 0;
+                window.create(defaultSize, "Space Invaders",
                                         Titlebar | Close);
-                scaled.x = window.getSize().x / scaled.x;
-                scaled.y = window.getSize().y / scaled.y;
-                for (Sprite &sprite : sDraw)
-                    sprite.scale(scaled);
+                windowScale.x = defaultSize.width / fullSize.width;
+                windowScale.y = defaultSize.height / fullSize.height;
+                for (Sprite *sprite : sDraw)
+                    sprite->scale(windowScale);
+                windowScale.x = 1;
+                windowScale.y = 1;
             }
         }
     }
@@ -62,16 +62,25 @@ void Game::input()
 
 void Game::update()
 {
+    for (Sprite* sprite : sDraw)
+    {
+        if (sprite->getType() == player)
+        {
+            Player* playerConvert = static_cast<Player*>(sprite);
+            playerConvert->playerUpdate();
+        }
+    }
     input();
 }
 
 void Game::render()
 {
     // window.clear();
-    for (Sprite &sprite : sDraw)
+    for (Sprite *sprite : sDraw)
     {
-        window.draw(*sprite.shadowSprite);
-        window.draw(sprite);
+        if (sprite->shadowSprite != nullptr)
+            window.draw(*sprite->shadowSprite);
+        window.draw(*sprite);
     }
     window.display();
 }
@@ -81,7 +90,13 @@ bool Game::isFinished()
     return (!window.isOpen() || isDone);
 }
 
-void Game::addDraw(Sprite spr)
+void Game::addDraw(Sprite* spr)
 {
     sDraw.push_back(spr);
+}
+
+void Game::addWall(spriteDemention rectangle, int side)
+{
+    sf::Sprite* wall = new sf::Sprite;
+    walls.push_back(wall);
 }

@@ -24,6 +24,8 @@ using sf::Style::Close;
 using sf::Style::Fullscreen;
 using sf::Style::None;
 
+enum SIDE {top, bottom, left, right};
+
 class Game
 {
 public:
@@ -35,16 +37,23 @@ public:
     void render();
     bool isFinished();
 
-    void addDraw(Sprite spr);
+    void addDraw(Sprite* spr);
+    void addWall(spriteDemention rectangle, int side);
 
+    static Vector2f windowScale;
+    static Vector2u windowSize;
 
 private:
     RenderWindow window;
-    Vector2u defaultSize;
+    VideoMode fullSize;
+    VideoMode defaultSize;
+    bool fullScreen;
     bool    isDone;
-    vector<Sprite> sDraw;
+    vector<Sprite*> sDraw;
+    vector<sf::Sprite*> walls;
 
 };
+
 
 
 

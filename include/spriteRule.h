@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 #include <string>
+#include <iostream>
 using std::string;
 
 using sf::Texture;
@@ -29,7 +30,7 @@ struct spriteDemention
 enum TYPE {player, enemy1, enemy2, enemy3, saucer, bullet, barrier, blank, shadow};
 const string textureFile = "data/Sprite_Texture_Sheet_150x150.png";
 const int NUM_TYPES = 5;
-const string SPRITE_TYPES[] = {"player", "saucer", "enemy1", "enemy2", "enemy3"};
+const string SPRITE_TYPES[] = {"player", "enemy1", "enemy2", "enemy3", "saucer"};
 const spriteDemention SPRITE_IMAGES[] = {spriteDemention(0,0,50,50), spriteDemention(50,0,50,50), spriteDemention(100,0,50,50), 
                                          spriteDemention(0,50,50,50), spriteDemention(50,50,50,50), spriteDemention(100,50,50,50),
                                          spriteDemention(0,100,50,50), spriteDemention(50,100,50,50), spriteDemention(100,100,50,50)};
@@ -37,10 +38,15 @@ const spriteDemention SPRITE_IMAGES[] = {spriteDemention(0,0,50,50), spriteDemen
 class Sprite : public sf::Sprite
 {
 public:
+    // Constructors and Destructors
     Sprite();
     Sprite(int type);
-    ~Sprite();
+    virtual ~Sprite();
+    // Functions
     void loadTexture(string file);
+    void loadShadow();
+    bool isCollision(Sprite A, Sprite B);
+    int getType();
     // Overloaded Functions
     void move(float offsetX, float offsetY);
     void move(const Vector2f &offset);
@@ -51,7 +57,7 @@ public:
     Sprite *shadowSprite;
 
 protected:
-    string spriteType;
+    int spriteType;
     int health;
     spriteDemention hitBox;
     spriteDemention image;
