@@ -64,17 +64,15 @@ void Game::input()
             }
             else if (event.key.code == Keyboard::D)
             {
-                for (Sprite &sprite : sDraw)
-                    sprite.move(10,0);
+                for (Sprite *sprite : sDraw)
+                    sprite->move(10,0);
             }
         }
     }
 }
 
-void Game::update(Sprite* sprite)
+void Game::update()
 {
-    Player* playerConvert = static_cast<Player*>(sprite);
-    playerConvert->playerUpdate(window.getSize());
     input();
 }
 
@@ -83,7 +81,8 @@ void Game::render()
     window.clear();
     for (Sprite *sprite : sDraw)
     {
-        window.draw(*sprite->shadowSprite);
+        if (sprite->shadowSprite != nullptr)
+            window.draw(*sprite->shadowSprite);
         window.draw(*sprite);
     }
     window.display();
@@ -101,6 +100,6 @@ void Game::addDraw(Sprite* spr)
 
 void Game::addWall(spriteDemention rectangle, int side)
 {
-    sf::Sprite *wall = new sf::Sprite;
+    sf::Sprite* wall = new sf::Sprite;
     walls.push_back(wall);
 }

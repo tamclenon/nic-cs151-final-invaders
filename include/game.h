@@ -33,20 +33,21 @@ public:
     virtual ~Game();
 
     void input();
-    void update(Sprite* sprite);
+    void update();
     void render();
     bool isFinished();
 
-    void addDraw(Sprite &spr);
+    void addDraw(Sprite* spr);
     void addWall(spriteDemention rectangle, int side);
 
 
 private:
-    
+    RenderWindow window;
+    Vector2u windowScale;
     Vector2u defaultSize;
     bool    isDone;
     vector<Sprite*> sDraw;
-    vector<Sprite*> walls;
+    vector<sf::Sprite*> walls;
 
 };
 
