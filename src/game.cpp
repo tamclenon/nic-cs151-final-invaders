@@ -73,6 +73,8 @@ void Game::input()
 
 void Game::update()
 {
+    // Player* playerConvert = static_cast<Player*>(sprite);
+    // playerConvert->playerUpdate(window.getSize());
     input();
 }
 
