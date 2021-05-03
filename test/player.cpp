@@ -16,11 +16,6 @@ Player::~Player()
 
 }
 
-void Player::changePos(sf::RenderWindow window)
-{
-    this->setPosition(getPosition().x, window.getSize().y - 50);
-}
-
 void Player::playerUpdate(Vector2u vec)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && ((this->getPosition().x + 50) <= vec.x))
