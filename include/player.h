@@ -12,7 +12,7 @@ public:
     virtual ~Player();
 
     void playerInput();
-    virtual void playerUpdate(Vector2u vec);
+    virtual void playerUpdate();
 
 
 

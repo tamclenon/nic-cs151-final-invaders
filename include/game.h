@@ -40,16 +40,20 @@ public:
     void addDraw(Sprite* spr);
     void addWall(spriteDemention rectangle, int side);
 
+    static Vector2f windowScale;
+    static Vector2u windowSize;
 
 private:
     RenderWindow window;
-    Vector2u windowScale;
-    Vector2u defaultSize;
+    VideoMode fullSize;
+    VideoMode defaultSize;
+    bool fullScreen;
     bool    isDone;
     vector<Sprite*> sDraw;
     vector<sf::Sprite*> walls;
 
 };
+
 
 
 

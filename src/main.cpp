@@ -9,16 +9,17 @@ using namespace std;
 
 
 
+Vector2f Game::windowScale = {1,1};
+Vector2u Game::windowSize = {650, 350};
 
 int main()
 {
 	Game game;
 
 	Sprite* enemy = new Enemy(enemy1);
-	enemy->loadTexture(textureFile);
 	game.addDraw(enemy);
 
-	Sprite* playerS = new Player(0, game);
+	Sprite* playerS = new Player(player, game);
 	playerS->loadTexture(textureFile);
 	game.addDraw(playerS);
 

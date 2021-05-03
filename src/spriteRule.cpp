@@ -5,7 +5,7 @@ Sprite::Sprite()
 {
     int type = shadow;
     cout << type << endl;
-    spriteType = "shadow";
+    spriteType = type;
     cout << spriteType << endl;
     image = SPRITE_IMAGES[type];
     loadTexture(textureFile);
@@ -14,12 +14,10 @@ Sprite::Sprite()
 Sprite::Sprite(int type)
 {
     cout << type << endl;
-    spriteType = SPRITE_TYPES[type];
-    cout << spriteType << endl;
+    spriteType = type;
+    cout << SPRITE_TYPES[type] << endl;
     image = SPRITE_IMAGES[type];
     loadTexture(textureFile);
-    shadowSprite = new Sprite;
-    shadowSprite->setPosition({getPosition().x - 10, getPosition().y});
 }
 Sprite::~Sprite()
 {
@@ -31,9 +29,18 @@ void Sprite::loadTexture(string file)
     texture.loadFromFile(file, IntRect(image.sPosX, image.sPosY, image.sExtX, image.sExtY));
     setTexture(texture);
 }
+void Sprite::loadShadow()
+{
+    shadowSprite = new Sprite;
+    shadowSprite->setPosition({getPosition().x, getPosition().y});
+}
 bool Sprite::isCollision(Sprite A, Sprite B)
 {
     return A.getGlobalBounds().intersects(B.getGlobalBounds());
+}
+int Sprite::getType()
+{
+    return spriteType;
 }
 
 void Sprite::move(float offsetX, float offsetY)
