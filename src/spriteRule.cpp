@@ -1,12 +1,25 @@
 #include "spriteRule.h"
 using namespace std;
 
+Sprite::Sprite()
+{
+    int type = shadow;
+    cout << type << endl;
+    spriteType = "shadow";
+    cout << spriteType << endl;
+    image = SPRITE_IMAGES[type];
+    loadTexture(textureFile);
+    shadowSprite = nullptr;
+}
 Sprite::Sprite(int type)
 {
     cout << type << endl;
     spriteType = SPRITE_TYPES[type];
     cout << spriteType << endl;
     image = SPRITE_IMAGES[type];
+    loadTexture(textureFile);
+    shadowSprite = new Sprite;
+    shadowSprite->setPosition({getPosition().x - 10, getPosition().y});
 }
 Sprite::~Sprite()
 {

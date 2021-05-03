@@ -9,6 +9,7 @@ using std::string;
 
 using sf::Texture;
 using sf::IntRect;
+using sf::Vector2f;
 
 struct spriteDemention
 {
@@ -26,14 +27,13 @@ struct spriteDemention
     }
 };
 
-enum TYPE {player, saucer, enemy1, enemy2, enemy3};
+enum TYPE {player, enemy1, enemy2, enemy3, saucer, bullet, barrier, blank, shadow};
+const string textureFile = "data/Sprite_Texture_Sheet_150x150.png";
 const int NUM_TYPES = 5;
 const string SPRITE_TYPES[] = {"player", "saucer", "enemy1", "enemy2", "enemy3"};
-const spriteDemention SPRITE_IMAGES[] = {spriteDemention(0,0,50,50), 
-                                         spriteDemention(50,0,50,50), 
-                                         spriteDemention(0,0,50,50), 
-                                         spriteDemention(0,0,50,50), 
-                                         spriteDemention(0,0,50,50)};
+const spriteDemention SPRITE_IMAGES[] = {spriteDemention(0,0,50,50), spriteDemention(50,0,50,50), spriteDemention(100,0,50,50), 
+                                         spriteDemention(0,50,50,50), spriteDemention(50,50,50,50), spriteDemention(100,50,50,50),
+                                         spriteDemention(0,100,50,50), spriteDemention(50,100,50,50), spriteDemention(100,100,50,50)};
 
 class Sprite : public sf::Sprite
 {
@@ -60,7 +60,8 @@ protected:
     spriteDemention hitBox;
     spriteDemention image;
     Texture texture;
+
 private:
-    
+
 };
 #endif
