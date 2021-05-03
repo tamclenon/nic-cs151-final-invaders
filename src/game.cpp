@@ -27,7 +27,7 @@ Game::~Game()
 
 }
 
-void Game::input()
+void Game::input(Sprite* sprite)
 {
     Event event;
     while (window.pollEvent(event))
@@ -47,6 +47,7 @@ void Game::input()
                 window.create(VideoMode::getDesktopMode(), "Space Invaders", Fullscreen);
                 scaled.x = window.getSize().x / scaled.x;
                 scaled.y = window.getSize().y / scaled.y;
+                sprite->setPosition(scaled.x * sprite->getPosition().x, window.getSize().y - (50 * scaled.y));
                 for (Sprite *sprite : sDraw)
                     sprite->scale(scaled);
             }
@@ -59,6 +60,7 @@ void Game::input()
                                         Titlebar | Close);
                 scaled.x = window.getSize().x / scaled.x;
                 scaled.y = window.getSize().y / scaled.y;
+                sprite->setPosition(scaled.x * sprite->getPosition().x, window.getSize().y - 50);
                 for (Sprite *sprite : sDraw)
                     sprite->scale(scaled);
             }
@@ -70,7 +72,7 @@ void Game::update(Sprite* sprite)
 {
     Player* playerConvert = static_cast<Player*>(sprite);
     playerConvert->playerUpdate(window.getSize());
-    input();
+    input(sprite);
 }
 
 void Game::render()

@@ -14,9 +14,9 @@ int main()
 {
 	Game game;
 
-	//Enemy sprite(enemy1);
-	//sprite.loadTexture(textureFile);
-	//game.addDraw(sprite);
+	Sprite* enemy = new Enemy(enemy1);
+	enemy->loadTexture(textureFile);
+	game.addDraw(enemy);
 
 	Sprite* playerS = new Player(0, game);
 	playerS->loadTexture(textureFile);
@@ -51,6 +51,7 @@ int main()
 		++fps;
 	}
 	delete playerS;
+	delete enemy;
 	
 	return 0;
 }
