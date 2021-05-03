@@ -12,7 +12,6 @@ using namespace std;
 
 int main()
 {
-	string textureFile = "data/Sprite_Texture_Sheet_150x150.png";
 	Game game;
 
 	//Enemy sprite(enemy1);
@@ -22,6 +21,9 @@ int main()
 	Sprite* playerS = new Player(0, game);
 	playerS->loadTexture(textureFile);
 	game.addDraw(playerS);
+	
+	Sprite* sprite = new Enemy(enemy1);
+	game.addDraw(sprite);
 
 	const sf::Time TIME_PER_FRAME = sf::seconds(1.f / 60.f);
     sf::Clock clock; // starts the clock

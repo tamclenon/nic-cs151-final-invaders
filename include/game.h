@@ -15,12 +15,14 @@ using std::vector;
 
 using sf::RenderWindow;
 using sf::Vector2u;
+using sf::Vector2f;
 using sf::Event;
 using sf::Keyboard;
 using sf::VideoMode;
 using sf::Style::Titlebar;
 using sf::Style::Close;
 using sf::Style::Fullscreen;
+using sf::Style::None;
 
 class Game
 {

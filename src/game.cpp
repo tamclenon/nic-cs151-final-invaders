@@ -7,16 +7,19 @@ using namespace std;
 
 Game::Game()
 {
-    defaultSize.x = 640;
-	defaultSize.y = 360;
+    defaultSize.x = 650;
+	defaultSize.y = 350;
     
     windowScale.x = sf::VideoMode::getDesktopMode().width;
     windowScale.y = sf::VideoMode::getDesktopMode().height;
 
     window.create(VideoMode(defaultSize.x, defaultSize.y), "Space Invaders",
 								Titlebar | Close);
+    // window.setMouseCursorGrabbed(true);
 
     isDone = false;
+    const VideoMode &vid = VideoMode::getDesktopMode();
+    cout << vid.width << ',' << vid.height << endl;
 }
 
 Game::~Game()
@@ -38,19 +41,26 @@ void Game::input(Sprite* sprite)
         {
             if ((event.key.code == Keyboard::F10) && (window.getSize() == defaultSize))
             {
-                window.create(VideoMode::getFullscreenModes()[0], "Space Invaders", Fullscreen);
-
-                float scaleX = (/*window.getSize().x*/windowScale.x / defaultSize.x) * sprite->getPosition().x;
-                sprite->setPosition(scaleX + (scaleX / 10), window.getSize().y - 50);
+                Vector2f scaled;
+                scaled.x = window.getSize().x;
+                scaled.y = window.getSize().y;
+                window.create(VideoMode::getDesktopMode(), "Space Invaders", Fullscreen);
+                scaled.x = window.getSize().x / scaled.x;
+                scaled.y = window.getSize().y / scaled.y;
+                for (Sprite *sprite : sDraw)
+                    sprite->scale(scaled);
             }
             else if (event.key.code == Keyboard::F10)
             {
-                float scaleX = sprite->getPosition().x / (/*window.getSize().x*/windowScale.x / defaultSize.x);
-
+                Vector2f scaled;
+                scaled.x = window.getSize().x;
+                scaled.y = window.getSize().y;
                 window.create(VideoMode(defaultSize.x, defaultSize.y), "Space Invaders",
                                         Titlebar | Close);
-
-                sprite->setPosition(scaleX - (scaleX / 10), window.getSize().y - 50);
+                scaled.x = window.getSize().x / scaled.x;
+                scaled.y = window.getSize().y / scaled.y;
+                for (Sprite *sprite : sDraw)
+                    sprite->scale(scaled);
             }
         }
     }
@@ -67,7 +77,10 @@ void Game::render()
 {
     window.clear();
     for (Sprite *sprite : sDraw)
+    {
+        window.draw(*sprite->shadowSprite);
         window.draw(*sprite);
+    }
     window.display();
 }
 
