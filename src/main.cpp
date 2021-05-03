@@ -27,7 +27,7 @@ int main()
     sf::Clock clock; // starts the clock
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	int fps = 0;
-	int updates = 0;
+	int ups = 0;
 	float seconds = 0;
 
 	while (!game.isFinished())
@@ -37,16 +37,16 @@ int main()
 		// cout << seconds << endl;
 		if (seconds >= 1.0)
 		{
-			cout << "FPS: " << fps << "\tUPS: " << updates << "\tIn " << seconds << endl;
+			cout << "FPS: " << fps << "\tUPS: " << ups << "\tIn " << seconds << endl;
 			seconds = 0;
-			updates = 0;
+			ups = 0;
 			fps = 0;
 		}
 		while (timeSinceLastUpdate > TIME_PER_FRAME)
         {
             timeSinceLastUpdate -= TIME_PER_FRAME;
-            game.update(playerS);
-			++updates;
+            game.update();
+			++ups;
         }
 		game.render();
 		++fps;

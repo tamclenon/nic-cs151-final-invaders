@@ -52,6 +52,11 @@ void Game::input(Sprite* sprite)
 
                 sprite->setPosition(scaleX - (scaleX / 10), window.getSize().y - 50);
             }
+            else if (event.key.code == Keyboard::D)
+            {
+                for (Sprite &sprite : sDraw)
+                    sprite.move(10,0);
+            }
         }
     }
 }
@@ -79,4 +84,10 @@ bool Game::isFinished()
 void Game::addDraw(Sprite* spr)
 {
     sDraw.push_back(spr);
+}
+
+void Game::addWall(spriteDemention rectangle, int side)
+{
+    sf::Sprite *wall = new sf::Sprite;
+    walls.push_back(wall);
 }

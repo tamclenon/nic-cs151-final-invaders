@@ -38,9 +38,21 @@ const spriteDemention SPRITE_IMAGES[] = {spriteDemention(0,0,50,50),
 class Sprite : public sf::Sprite
 {
 public:
-    Sprite(int type = player);
+    // Constructors and Destructors
+    Sprite();
+    Sprite(int type);
     virtual ~Sprite();
+    // Functions
     void loadTexture(string file);
+    bool isCollision(Sprite A, Sprite B);
+    // Overloaded Functions
+    void move(float offsetX, float offsetY);
+    void move(const Vector2f &offset);
+    void scale(float factorX, float factorY);
+    void scale(const Vector2f &factor);
+
+    // Public Variables
+    Sprite *shadowSprite;
 
 protected:
     string spriteType;
