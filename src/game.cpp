@@ -27,7 +27,7 @@ Game::~Game()
 
 }
 
-void Game::input(Sprite* sprite)
+void Game::input()
 {
     Event event;
     while (window.pollEvent(event))
@@ -70,7 +70,7 @@ void Game::update(Sprite* sprite)
 {
     Player* playerConvert = static_cast<Player*>(sprite);
     playerConvert->playerUpdate(window.getSize());
-    input(sprite);
+    input();
 }
 
 void Game::render()

@@ -30,7 +30,7 @@ public:
     Game();
     virtual ~Game();
 
-    void input(Sprite* sprite);
+    void input();
     void update(Sprite* sprite);
     void render();
     bool isFinished();
