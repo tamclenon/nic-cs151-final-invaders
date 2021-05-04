@@ -3,6 +3,8 @@
 #define GAME_H
 
 #include "spriteRule.h"
+#include "player.h"
+#include "enemy.h"
 
 #include <vector>
 
@@ -26,6 +28,7 @@ using sf::Style::None;
 using sf::RectangleShape;
 
 enum SIDE {TOP, BOTTOM, LEFT, RIGHT};
+const float PLAYPERCENT = .65;
 
 class Game
 {
@@ -41,10 +44,11 @@ public:
     void addDraw(Sprite* spr);
     void addWall(int side);
     void addShadow(const Vector2f &pos, const Vector2f &size);
+    void loadPlayer();
+    void loadEnemy();
 
     static Vector2f windowScale;
     static Vector2u windowSize;
-    static vector<Sprite*> sDraw;
     static vector<RectangleShape*> sShadow;
     static vector<RectangleShape*> walls;
 
@@ -55,6 +59,9 @@ private:
     bool fullScreen;
     bool    isDone;
     bool showBorder;
+    vector<Sprite*> sDraw;
+    Player* player;
+    vector<Enemy*> enemies;
 };
 
 

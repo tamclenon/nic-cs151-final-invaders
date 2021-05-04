@@ -1,11 +1,10 @@
 #include "player.h"
-using std::cout;
-using std::endl;
+#include "game.h"
 
-Player::Player(int type) : Sprite(type)
+Player::Player() : Sprite(PLAYER)
 {
     speed = 5;
-    setPosition((Game::windowSize.x * .56 / 2) - 25, Game::windowSize.y * .9 + Game::windowSize.y * .05 - 25);
+    setPosition((Game::windowSize.x * PLAYPERCENT / 2) - 25, Game::windowSize.y * .9 + Game::windowSize.y * .05 - 25);
 }
 
 Player::~Player()
