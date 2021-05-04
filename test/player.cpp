@@ -2,8 +2,9 @@
 using std::cout;
 using std::endl;
 
-Player::Player(int type, const Game& game) : Sprite(type)
+Player::Player(int type) : Sprite(type)
 {
+    speed = 5;
     setPosition((Game::windowSize.x / 2) - 25, Game::windowSize.y - 50);
     loadShadow();
 }
@@ -17,10 +18,14 @@ void Player::playerUpdate()
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-        this->move(Game::windowScale.x * 5, 0); // (static_cast<float>(vec.x) + 3) / 150
+        move(Game::windowScale.x * speed, 0); // (static_cast<float>(vec.x) + 3) / 150
+        if (isCollision(Game::walls[RIGHT]))
+            move(Game::windowScale.x * -speed, 0);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
-        this->move(Game::windowScale.x * -5, 0); // -(static_cast<float>(vec.x) + 3) / 150
+        move(Game::windowScale.x * -speed, 0); // -(static_cast<float>(vec.x) + 3) / 150
+        if (isCollision(Game::walls[LEFT]))
+            move(Game::windowScale.x * speed, 0);
     }
 }

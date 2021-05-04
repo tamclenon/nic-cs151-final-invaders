@@ -3,12 +3,6 @@ using namespace std;
 
 Sprite::Sprite()
 {
-    int type = shadow;
-    cout << type << endl;
-    spriteType = type;
-    cout << spriteType << endl;
-    image = SPRITE_IMAGES[type];
-    loadTexture(textureFile);
     shadowSprite = nullptr;
 }
 Sprite::Sprite(int type)
@@ -18,6 +12,7 @@ Sprite::Sprite(int type)
     cout << SPRITE_TYPES[type] << endl;
     image = SPRITE_IMAGES[type];
     loadTexture(textureFile);
+    shadowSprite = nullptr;
 }
 Sprite::~Sprite()
 {
@@ -31,12 +26,12 @@ void Sprite::loadTexture(string file)
 }
 void Sprite::loadShadow()
 {
-    shadowSprite = new Sprite;
+    shadowSprite = new Sprite(SHADOW);
     shadowSprite->setPosition({getPosition().x, getPosition().y});
 }
-bool Sprite::isCollision(Sprite A, Sprite B)
+bool Sprite::isCollision(Sprite* spr)
 {
-    return A.getGlobalBounds().intersects(B.getGlobalBounds());
+    return getGlobalBounds().intersects(spr->getGlobalBounds());
 }
 int Sprite::getType()
 {

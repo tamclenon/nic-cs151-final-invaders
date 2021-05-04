@@ -11,15 +11,19 @@ using namespace std;
 
 Vector2f Game::windowScale = {1,1};
 Vector2u Game::windowSize = {650, 350};
+vector<Sprite*> Game::sDraw;
+vector<Sprite*> Game::walls;
+
+
 
 int main()
 {
 	Game game;
 
-	Sprite* enemy = new Enemy(enemy1);
+	Sprite* enemy = new Enemy(ENEMY);
 	game.addDraw(enemy);
 
-	Sprite* playerS = new Player(player, game);
+	Sprite* playerS = new Player(PLAYER);
 	playerS->loadTexture(textureFile);
 	game.addDraw(playerS);
 
@@ -51,8 +55,8 @@ int main()
 		game.render();
 		++fps;
 	}
-	delete playerS;
-	delete enemy;
+	// delete playerS;
+	// delete enemy;
 	
 	return 0;
 }

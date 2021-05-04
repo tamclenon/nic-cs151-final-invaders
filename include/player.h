@@ -8,7 +8,7 @@ class Player : public Sprite
 {
 
 public:
-    Player(int type, const Game& game);
+    Player(int type);
     virtual ~Player();
 
     void playerInput();
@@ -17,7 +17,6 @@ public:
 
 
 private:
-
 
 
 
