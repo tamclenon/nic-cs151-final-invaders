@@ -13,7 +13,7 @@ Vector2f Game::windowScale = {1,1};
 Vector2u Game::windowSize = {1333, 750};
 vector<Sprite*> Game::sDraw;
 vector<sf::RectangleShape*> Game::sShadow;
-vector<Sprite*> Game::walls;
+vector<RectangleShape*> Game::walls;
 
 int Enemy::direction = RIGHT;
 

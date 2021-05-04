@@ -46,7 +46,7 @@ public:
     static Vector2u windowSize;
     static vector<Sprite*> sDraw;
     static vector<RectangleShape*> sShadow;
-    static vector<Sprite*> walls;
+    static vector<RectangleShape*> walls;
 
 private:
     RenderWindow window;
