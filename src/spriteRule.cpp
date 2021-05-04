@@ -27,6 +27,10 @@ bool Sprite::isCollision(Sprite* spr)
 {
     return getGlobalBounds().intersects(spr->getGlobalBounds());
 }
+bool Sprite::isCollision(RectangleShape* rec)
+{
+    return getGlobalBounds().intersects(rec->getGlobalBounds());
+}
 int Sprite::getType()
 {
     return spriteType;

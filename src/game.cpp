@@ -18,7 +18,7 @@ Game::Game()
 
     fullScreen = 0;
     isDone = false;
-    showBorder = 1;
+    showBorder = 0;
     for (int i = 0; i < 4; ++i)
         addWall(i);
     addShadow({0,0}, {(windowSize.x * .56f),(windowSize.y * .7f)});
@@ -60,8 +60,11 @@ void Game::input()
                 }
                 for (Sprite *sprite : sDraw)
                     sprite->scale(windowScale);
-                for (Sprite *sprite : walls)
-                    delete sprite;
+                for (RectangleShape* wall : walls)
+                {
+                    wall->scale(windowScale);
+                    wall->setPosition({wall->getPosition().x * windowScale.x, wall->getPosition().y * windowScale.y});
+                }
                 walls.clear();
                 for (int i = 0; i < 4; ++i)
                     addWall(i);
@@ -84,8 +87,11 @@ void Game::input()
                 }
                 for (Sprite* sprite : sDraw)
                     sprite->scale(windowScale);
-                for (Sprite* sprite : walls)
-                    delete sprite;
+                for (RectangleShape* wall : walls)
+                {
+                    wall->scale(windowScale);
+                    wall->setPosition({wall->getPosition().x * windowScale.x, wall->getPosition().y * windowScale.y});
+                }
                 walls.clear();
                 for (int i = 0; i < 4; ++i)
                     addWall(i);
@@ -95,21 +101,14 @@ void Game::input()
             else if ((event.key.code == Keyboard::F9) && (!showBorder))
             {
                 showBorder = 1;
-                for (Sprite *sprite : walls)
-                    delete sprite;
-                walls.clear();
-                for (int i = 0; i < 4; ++i)
-                    addWall(i);
+                for (RectangleShape *wall : walls)
+                    wall->setFillColor({255,255,255});
             }
             else if ((event.key.code == Keyboard::F9))
             {
-                window.clear();
                 showBorder = 0;
-                for (Sprite *sprite : walls)
-                    delete sprite;
-                walls.clear();
-                for (int i = 0; i < 4; ++i)
-                    addWall(i);
+                for (RectangleShape *wall : walls)
+                    wall->setFillColor({0,0,0});
             }
         }
     }
@@ -139,9 +138,9 @@ void Game::render()
 
     for (RectangleShape* shadow : sShadow)
         window.draw(*shadow);
-    for (Sprite *sprite : sDraw)
+    for (Sprite* sprite : sDraw)
         window.draw(*sprite);
-    for (sf::Sprite* wall : walls)
+    for (RectangleShape* wall : walls)
         window.draw(*wall);
     window.display();
 }
@@ -158,8 +157,6 @@ void Game::addDraw(Sprite* spr)
 
 void Game::addWall(int side)
 {
-    Sprite* wall = new Sprite(WALL);
-    walls.push_back(wall);
     Vector2f size;
     Vector2f pos;
     switch (side)
@@ -169,7 +166,7 @@ void Game::addWall(int side)
             size.x = windowSize.x * .56;
             size.y = 1;
             pos.x = 0;
-            pos.y = -!showBorder;
+            pos.y = 0;
             break;
         }
         case BOTTOM:
@@ -177,14 +174,14 @@ void Game::addWall(int side)
             size.x = windowSize.x * .56;
             size.y = 1;
             pos.x = 0;
-            pos.y = windowSize.y - showBorder;
+            pos.y = windowSize.y - 1;
             break;
         }
         case LEFT:
         {
             size.x = 1;
             size.y = windowSize.y;
-            pos.x = -!showBorder;
+            pos.x = 0;
             pos.y = 0;
             break;
         }
@@ -192,21 +189,22 @@ void Game::addWall(int side)
         {
             size.x = 1;
             size.y = windowSize.y;
-            pos.x = windowSize.x * .56 - showBorder;
+            pos.x = windowSize.x * .56 - 1;
             pos.y = 0;
             break;
         }
     };
-    wall->setHealth(side);
-    wall->setScale(size);
+
+    RectangleShape* wall = new RectangleShape(size);
     wall->setPosition(pos);
-    cout << wall->getScale().x << ',' << wall->getScale().y << ' '
-         << wall->getPosition().x << ',' << wall->getPosition().y << endl;
+    wall->setFillColor({0,0,0});
+    walls.push_back(wall);
+    cout << "Wall" << side << endl;
 }
 void Game::addShadow(const Vector2f &pos, const Vector2f &size)
 {
     RectangleShape* shadow = new RectangleShape(size);
     shadow->setPosition(pos);
-    shadow->setFillColor({255,255,255});
+    shadow->setFillColor({0,0,0});
     sShadow.push_back(shadow);
 }

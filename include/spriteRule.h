@@ -10,6 +10,7 @@ using std::string;
 using sf::Texture;
 using sf::IntRect;
 using sf::Vector2f;
+using sf::RectangleShape;
 
 struct spriteDemention
 {
@@ -27,10 +28,10 @@ struct spriteDemention
     }
 };
 
-enum TYPE {PLAYER, ENEMY, PLACE, PLACE2, SAUCER, BULLET, BARRIER, WALL, SHADOW};
+enum TYPE {PLAYER, ENEMY, PLACE, PLACE2, SAUCER, BULLET, BARRIER, PLACE3, PLACE4};
 const string textureFile = "data/Sprite_Texture_Sheet_150x150.png";
 const int NUM_TYPES = 5;
-const string SPRITE_TYPES[] = {"player", "enemy1", "enemy2", "enemy3", "saucer", "bullet", "barrier", "wall", "shadow"};
+const string SPRITE_TYPES[] = {"player", "enemy", "place", "place", "saucer", "bullet", "barrier", "place", "place"};
 const spriteDemention SPRITE_IMAGES[] = {spriteDemention(0,0,50,50), spriteDemention(50,0,50,50), spriteDemention(100,0,50,50), 
                                          spriteDemention(0,50,50,50), spriteDemention(50,50,50,50), spriteDemention(100,50,50,50),
                                          spriteDemention(0,100,50,50), spriteDemention(50,100,1,1), spriteDemention(100,100,50,50)};
@@ -45,6 +46,7 @@ public:
     // Functions
     void loadTexture(string file);
     bool isCollision(Sprite* spr);
+    bool isCollision(RectangleShape* rec);
     int getType();
     void setHealth(int h);
     int getHealth();
