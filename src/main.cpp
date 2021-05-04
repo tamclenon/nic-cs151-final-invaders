@@ -1,5 +1,5 @@
 #include "game.h"
-#include "enemyLogic.h"
+#include "enemy.h"
 #include "player.h"
 
 #include <time.h>
@@ -14,7 +14,7 @@ Vector2u Game::windowSize = {650, 350};
 vector<Sprite*> Game::sDraw;
 vector<Sprite*> Game::walls;
 
-
+int Enemy::direction = RIGHT;
 
 int main()
 {

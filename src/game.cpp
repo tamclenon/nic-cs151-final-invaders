@@ -1,5 +1,6 @@
 #include "game.h"
 #include "player.h"
+#include "enemy.h"
 #include <iostream>
 using namespace std;
 
@@ -72,8 +73,13 @@ void Game::update()
     {
         if (sprite->getType() == PLAYER)
         {
-            Player* playerConvert = static_cast<Player*>(sprite);
-            playerConvert->playerUpdate();
+            Player* spriteConvert = static_cast<Player*>(sprite);
+            spriteConvert->update();
+        }
+        else if (sprite->getType() == ENEMY)
+        {
+            Enemy* spriteConvert = static_cast<Enemy*>(sprite);
+            spriteConvert->update();
         }
     }
     input();

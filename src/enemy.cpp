@@ -1,31 +1,36 @@
-#include "player.h"
-using std::cout;
-using std::endl;
+#include "enemy.h"
 
-Player::Player(int type) : Sprite(type)
+Enemy::Enemy(int type) : Sprite(type)
 {
     speed = 5;
-    setPosition((Game::windowSize.x / 2) - 25, Game::windowSize.y - 50);
     loadShadow();
 }
 
-Player::~Player()
+Enemy::~Enemy()
 {
 
 }
 
-void Player::update()
+void Enemy::update()
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    if (direction == RIGHT)
     {
         move(Game::windowScale.x * speed, 0);
         if (isCollision(Game::walls[RIGHT]))
+        {
             move(Game::windowScale.x * -speed, 0);
+            move(0, Game::windowScale.y * speed);
+            direction = LEFT;
+        }
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+    if (direction == LEFT)
     {
         move(Game::windowScale.x * -speed, 0);
         if (isCollision(Game::walls[LEFT]))
+        {
             move(Game::windowScale.x * speed, 0);
+            move(0, Game::windowScale.y * speed);
+            direction = RIGHT;
+        }
     }
 }

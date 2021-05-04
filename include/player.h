@@ -11,8 +11,7 @@ public:
     Player(int type);
     virtual ~Player();
 
-    void playerInput();
-    virtual void playerUpdate();
+    virtual void update();
 
 
 
