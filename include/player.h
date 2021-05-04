@@ -2,13 +2,12 @@
 #define PLAYER_H
 
 #include "spriteRule.h"
-#include "game.h"
 
 class Player : public Sprite
 {
 
 public:
-    Player(int type);
+    Player();
     virtual ~Player();
 
     virtual void update();

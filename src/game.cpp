@@ -1,6 +1,4 @@
 #include "game.h"
-#include "player.h"
-#include "enemy.h"
 #include <iostream>
 using namespace std;
 
@@ -18,12 +16,16 @@ Game::Game()
 
     fullScreen = 0;
     isDone = false;
+
     showBorder = 0;
     for (int i = 0; i < 4; ++i)
         addWall(i);
-    addShadow({0,0}, {(windowSize.x * .56f),(windowSize.y * .7f)});
-    addShadow({0,(windowSize.y * .7f)}, {(windowSize.x * .56f),(windowSize.y * .2f)});
-    addShadow({0,(windowSize.y * .9f)}, {(windowSize.x * .56f),(windowSize.y * .1f)});
+    addShadow({0,0}, {(windowSize.x * PLAYPERCENT),(windowSize.y * .7f)});
+    addShadow({0,(windowSize.y * .7f)}, {(windowSize.x * PLAYPERCENT),(windowSize.y * .2f)});
+    addShadow({0,(windowSize.y * .9f)}, {(windowSize.x * PLAYPERCENT),(windowSize.y * .1f)});
+
+    loadPlayer();
+    loadEnemy();
 }
 
 Game::~Game()
@@ -116,19 +118,14 @@ void Game::input()
 
 void Game::update()
 {
-    for (Sprite* sprite : sDraw)
+    player->update();
+    bool swap = enemies[0]->testCollision();
+    for (Enemy* enemy : enemies)
     {
-        if (sprite->getType() == PLAYER)
-        {
-            Player* spriteConvert = static_cast<Player*>(sprite);
-            spriteConvert->update();
-        }
-        else if (sprite->getType() == ENEMY)
-        {
-            Enemy* spriteConvert = static_cast<Enemy*>(sprite);
-            spriteConvert->update();
-        }
+        enemy->update();
     }
+    if (swap)
+        enemies[0]->swapTests(enemies);
     input();
 }
 
@@ -163,7 +160,7 @@ void Game::addWall(int side)
     {
         case TOP:
         {
-            size.x = windowSize.x * .56;
+            size.x = windowSize.x * PLAYPERCENT;
             size.y = 1;
             pos.x = 0;
             pos.y = 0;
@@ -171,7 +168,7 @@ void Game::addWall(int side)
         }
         case BOTTOM:
         {
-            size.x = windowSize.x * .56;
+            size.x = windowSize.x * PLAYPERCENT;
             size.y = 1;
             pos.x = 0;
             pos.y = windowSize.y - 1;
@@ -189,7 +186,7 @@ void Game::addWall(int side)
         {
             size.x = 1;
             size.y = windowSize.y;
-            pos.x = windowSize.x * .56 - 1;
+            pos.x = windowSize.x * PLAYPERCENT - 1;
             pos.y = 0;
             break;
         }
@@ -207,4 +204,21 @@ void Game::addShadow(const Vector2f &pos, const Vector2f &size)
     shadow->setPosition(pos);
     shadow->setFillColor({0,0,0});
     sShadow.push_back(shadow);
+}
+void Game::loadPlayer()
+{
+    player = new Player;
+    addDraw(player);
+}
+void Game::loadEnemy()
+{
+    for (int row = 0; row < 5; ++row)
+    {
+        for (int col = 0; col < 11; ++col)
+        {
+            Enemy* enemy = new Enemy(row, col);
+            enemies.push_back(enemy);
+            addDraw(enemy);
+        }
+    }
 }

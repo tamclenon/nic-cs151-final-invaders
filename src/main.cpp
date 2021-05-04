@@ -11,22 +11,25 @@ using namespace std;
 
 Vector2f Game::windowScale = {1,1};
 Vector2u Game::windowSize = {1333, 750};
-vector<Sprite*> Game::sDraw;
+// vector<Sprite*> Game::sDraw;
 vector<sf::RectangleShape*> Game::sShadow;
 vector<RectangleShape*> Game::walls;
 
 int Enemy::direction = RIGHT;
+bool Enemy::collision;
+int Enemy::shots;
 
 int main()
 {
+	srand(time(0));
 	Game game;
 
-	Sprite* enemy = new Enemy(ENEMY);
-	game.addDraw(enemy);
+	// Sprite* enemy = new Enemy;
+	// game.addDraw(enemy);
 
-	Sprite* playerS = new Player(PLAYER);
-	playerS->loadTexture(textureFile);
-	game.addDraw(playerS);
+	// Sprite* playerS = new Player;
+	// playerS->loadTexture(textureFile);
+	// game.addDraw(playerS);
 
 	const sf::Time TIME_PER_FRAME = sf::seconds(1.f / 60.f);
     sf::Clock clock; // starts the clock
