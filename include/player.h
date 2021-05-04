@@ -8,16 +8,14 @@ class Player : public Sprite
 {
 
 public:
-    Player(int type, const Game& game);
+    Player(int type);
     virtual ~Player();
 
-    void playerInput();
-    virtual void playerUpdate();
+    virtual void update();
 
 
 
 private:
-
 
 
 

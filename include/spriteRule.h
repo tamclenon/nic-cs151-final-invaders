@@ -27,13 +27,13 @@ struct spriteDemention
     }
 };
 
-enum TYPE {player, enemy1, enemy2, enemy3, saucer, bullet, barrier, blank, shadow};
+enum TYPE {PLAYER, ENEMY, PLACE, PLACE2, SAUCER, BULLET, BARRIER, WALL, SHADOW};
 const string textureFile = "data/Sprite_Texture_Sheet_150x150.png";
 const int NUM_TYPES = 5;
-const string SPRITE_TYPES[] = {"player", "enemy1", "enemy2", "enemy3", "saucer"};
+const string SPRITE_TYPES[] = {"player", "enemy1", "enemy2", "enemy3", "saucer", "bullet", "barrier", "wall", "shadow"};
 const spriteDemention SPRITE_IMAGES[] = {spriteDemention(0,0,50,50), spriteDemention(50,0,50,50), spriteDemention(100,0,50,50), 
                                          spriteDemention(0,50,50,50), spriteDemention(50,50,50,50), spriteDemention(100,50,50,50),
-                                         spriteDemention(0,100,50,50), spriteDemention(50,100,50,50), spriteDemention(100,100,50,50)};
+                                         spriteDemention(0,100,50,50), spriteDemention(50,100,1,1), spriteDemention(100,100,50,50)};
 
 class Sprite : public sf::Sprite
 {
@@ -45,7 +45,7 @@ public:
     // Functions
     void loadTexture(string file);
     void loadShadow();
-    bool isCollision(Sprite A, Sprite B);
+    bool isCollision(Sprite* spr);
     int getType();
     // Overloaded Functions
     void move(float offsetX, float offsetY);
@@ -59,6 +59,7 @@ public:
 protected:
     int spriteType;
     int health;
+    int speed;
     spriteDemention hitBox;
     spriteDemention image;
     Texture texture;
