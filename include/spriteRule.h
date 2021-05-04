@@ -44,17 +44,15 @@ public:
     virtual ~Sprite();
     // Functions
     void loadTexture(string file);
-    void loadShadow();
     bool isCollision(Sprite* spr);
     int getType();
+    void setHealth(int h);
+    int getHealth();
     // Overloaded Functions
-    void move(float offsetX, float offsetY);
-    void move(const Vector2f &offset);
     void scale(float factorX, float factorY);
     void scale(const Vector2f &factor);
 
     // Public Variables
-    Sprite *shadowSprite;
 
 protected:
     int spriteType;

@@ -23,6 +23,7 @@ using sf::Style::Titlebar;
 using sf::Style::Close;
 using sf::Style::Fullscreen;
 using sf::Style::None;
+using sf::RectangleShape;
 
 enum SIDE {TOP, BOTTOM, LEFT, RIGHT};
 
@@ -39,10 +40,12 @@ public:
 
     void addDraw(Sprite* spr);
     void addWall(int side);
+    void addShadow(const Vector2f &pos, const Vector2f &size);
 
     static Vector2f windowScale;
     static Vector2u windowSize;
     static vector<Sprite*> sDraw;
+    static vector<RectangleShape*> sShadow;
     static vector<Sprite*> walls;
 
 private:
@@ -51,6 +54,7 @@ private:
     VideoMode defaultSize;
     bool fullScreen;
     bool    isDone;
+    bool showBorder;
 };
 
 

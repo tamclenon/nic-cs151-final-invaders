@@ -8,7 +8,7 @@ using namespace std;
 
 Game::Game()
 {
-    defaultSize = VideoMode(650, 350);
+    defaultSize = VideoMode(windowSize.x, windowSize.y);
     
     fullSize = sf::VideoMode::getDesktopMode();
 
@@ -16,9 +16,14 @@ Game::Game()
 								Titlebar | Close);
     // window.setMouseCursorGrabbed(true);
 
+    fullScreen = 0;
     isDone = false;
+    showBorder = 1;
     for (int i = 0; i < 4; ++i)
         addWall(i);
+    addShadow({0,0}, {(windowSize.x * .56f),(windowSize.y * .7f)});
+    addShadow({0,(windowSize.y * .7f)}, {(windowSize.x * .56f),(windowSize.y * .2f)});
+    addShadow({0,(windowSize.y * .9f)}, {(windowSize.x * .56f),(windowSize.y * .1f)});
 }
 
 Game::~Game()
@@ -42,26 +47,69 @@ void Game::input()
             {
                 fullScreen = 1;
                 window.create(fullSize, "Space Invaders", Fullscreen);
-                windowScale.x = fullSize.width / defaultSize.width;
-                windowScale.y = fullSize.height / defaultSize.height;
+
+                windowScale.x = static_cast<float>(fullSize.width) / defaultSize.width;
+                windowScale.y = static_cast<float>(fullSize.height) / defaultSize.height;
+
+                windowSize = window.getSize();
+
+                for (RectangleShape* shadow : sShadow)
+                {
+                    shadow->scale(windowScale);
+                    shadow->setPosition({shadow->getPosition().x * windowScale.x, shadow->getPosition().y * windowScale.y});
+                }
                 for (Sprite *sprite : sDraw)
                     sprite->scale(windowScale);
                 for (Sprite *sprite : walls)
-                    sprite->scale(windowScale);
+                    delete sprite;
+                walls.clear();
+                for (int i = 0; i < 4; ++i)
+                    addWall(i);
             }
             else if (event.key.code == Keyboard::F10)
             {
                 fullScreen = 0;
                 window.create(defaultSize, "Space Invaders",
                                         Titlebar | Close);
-                windowScale.x = defaultSize.width / fullSize.width;
-                windowScale.y = defaultSize.height / fullSize.height;
-                for (Sprite *sprite : sDraw)
+                
+                windowScale.x = static_cast<float>(defaultSize.width) / fullSize.width;
+                windowScale.y = static_cast<float>(defaultSize.height) / fullSize.height;
+
+                windowSize = window.getSize();
+
+                for (RectangleShape* shadow : sShadow)
+                {
+                    shadow->scale(windowScale);
+                    shadow->setPosition({shadow->getPosition().x * windowScale.x, shadow->getPosition().y * windowScale.y});
+                }
+                for (Sprite* sprite : sDraw)
                     sprite->scale(windowScale);
-                for (Sprite *sprite : walls)
-                    sprite->scale(windowScale);
+                for (Sprite* sprite : walls)
+                    delete sprite;
+                walls.clear();
+                for (int i = 0; i < 4; ++i)
+                    addWall(i);
                 windowScale.x = 1;
                 windowScale.y = 1;
+            }
+            else if ((event.key.code == Keyboard::F9) && (!showBorder))
+            {
+                showBorder = 1;
+                for (Sprite *sprite : walls)
+                    delete sprite;
+                walls.clear();
+                for (int i = 0; i < 4; ++i)
+                    addWall(i);
+            }
+            else if ((event.key.code == Keyboard::F9))
+            {
+                window.clear();
+                showBorder = 0;
+                for (Sprite *sprite : walls)
+                    delete sprite;
+                walls.clear();
+                for (int i = 0; i < 4; ++i)
+                    addWall(i);
             }
         }
     }
@@ -88,12 +136,11 @@ void Game::update()
 void Game::render()
 {
     // window.clear();
+
+    for (RectangleShape* shadow : sShadow)
+        window.draw(*shadow);
     for (Sprite *sprite : sDraw)
-    {
-        if (sprite->shadowSprite != nullptr)
-            window.draw(*sprite->shadowSprite);
         window.draw(*sprite);
-    }
     for (sf::Sprite* wall : walls)
         window.draw(*wall);
     window.display();
@@ -119,25 +166,25 @@ void Game::addWall(int side)
     {
         case TOP:
         {
-            size.x = windowSize.x;
+            size.x = windowSize.x * .56;
             size.y = 1;
             pos.x = 0;
-            pos.y = -1;
+            pos.y = -!showBorder;
             break;
         }
         case BOTTOM:
         {
-            size.x = windowSize.x;
+            size.x = windowSize.x * .56;
             size.y = 1;
             pos.x = 0;
-            pos.y = windowSize.y;
+            pos.y = windowSize.y - showBorder;
             break;
         }
         case LEFT:
         {
             size.x = 1;
             size.y = windowSize.y;
-            pos.x = -1;
+            pos.x = -!showBorder;
             pos.y = 0;
             break;
         }
@@ -145,13 +192,21 @@ void Game::addWall(int side)
         {
             size.x = 1;
             size.y = windowSize.y;
-            pos.x = windowSize.x;
+            pos.x = windowSize.x * .56 - showBorder;
             pos.y = 0;
             break;
         }
     };
+    wall->setHealth(side);
     wall->setScale(size);
     wall->setPosition(pos);
     cout << wall->getScale().x << ',' << wall->getScale().y << ' '
          << wall->getPosition().x << ',' << wall->getPosition().y << endl;
+}
+void Game::addShadow(const Vector2f &pos, const Vector2f &size)
+{
+    RectangleShape* shadow = new RectangleShape(size);
+    shadow->setPosition(pos);
+    shadow->setFillColor({255,255,255});
+    sShadow.push_back(shadow);
 }

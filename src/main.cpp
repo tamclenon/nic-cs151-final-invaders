@@ -10,8 +10,9 @@ using namespace std;
 
 
 Vector2f Game::windowScale = {1,1};
-Vector2u Game::windowSize = {650, 350};
+Vector2u Game::windowSize = {1333, 750};
 vector<Sprite*> Game::sDraw;
+vector<sf::RectangleShape*> Game::sShadow;
 vector<Sprite*> Game::walls;
 
 int Enemy::direction = RIGHT;
