@@ -5,8 +5,7 @@ using std::endl;
 Player::Player(int type) : Sprite(type)
 {
     speed = 5;
-    setPosition((Game::windowSize.x / 2) - 25, Game::windowSize.y - 50);
-    loadShadow();
+    setPosition((Game::windowSize.x * .56 / 2) - 25, Game::windowSize.y * .9 + Game::windowSize.y * .05 - 25);
 }
 
 Player::~Player()
