@@ -6,6 +6,7 @@
 #include "player.h"
 #include "enemy.h"
 #include "barrier.h"
+#include "infoBoard.h"
 
 #include <vector>
 
@@ -45,9 +46,12 @@ public:
     void addDraw(Sprite* spr);
     void addWall(int side);
     void addShadow(const Vector2f &pos, const Vector2f &size);
+    void loadWalls();
+    void loadShadows();
     void loadPlayer();
     void loadEnemy();
     void loadBarrier();
+    void loadInfo();
 
     static Vector2f windowScale;
     static Vector2u windowSize;
@@ -65,6 +69,7 @@ private:
     Player* player;
     vector<Enemy*> enemies;
     vector<Barrier*> barriers;
+    Info* info;
 };
 
 

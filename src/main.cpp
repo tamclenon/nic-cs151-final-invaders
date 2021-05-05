@@ -24,13 +24,6 @@ int main()
 	srand(time(0));
 	Game game;
 
-	// Sprite* enemy = new Enemy;
-	// game.addDraw(enemy);
-
-	// Sprite* playerS = new Player;
-	// playerS->loadTexture(textureFile);
-	// game.addDraw(playerS);
-
 	const sf::Time TIME_PER_FRAME = sf::seconds(1.f / 60.f);
     sf::Clock clock; // starts the clock
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
