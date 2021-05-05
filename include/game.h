@@ -2,7 +2,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "spriteRule.h"
+//#include "spriteRule.h"
 #include "player.h"
 #include "enemy.h"
 #include "barrier.h"

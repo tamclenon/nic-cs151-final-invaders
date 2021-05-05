@@ -12,7 +12,7 @@ Sprite::Sprite(int type)
 }
 Sprite::~Sprite()
 {
-
+    delete this;
 }
 
 void Sprite::loadTexture(string file)
@@ -51,3 +51,8 @@ void Sprite::scale(const Vector2f &factor)
     Vector2f setPos = {getPosition().x * factor.x, getPosition().y * factor.y};
     setPosition(setPos);
 }
+
+// void Sprite::fire()
+// {
+//     this->bullet = new Bullet(this->getPosition().x, this->getPosition().y);
+// }

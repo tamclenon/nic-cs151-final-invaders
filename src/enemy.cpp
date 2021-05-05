@@ -8,6 +8,7 @@ Enemy::Enemy(int row, int col) : Sprite(ENEMY)
     column = col;
     health = 1;
     setPosition({col * 60.0f, row * 60.0f});
+    bulletExists = false;
 }
 
 Enemy::~Enemy()
@@ -15,8 +16,22 @@ Enemy::~Enemy()
 
 }
 
-void Enemy::update()
+void Enemy::update(vector<Sprite*>& vec)
 {
+    if((this->bulletExists))
+    {
+        this->bullet->move(0, 5);
+        if (this->bullet->getPosition().y >= (Game::windowSize.y + 50))
+        {
+            this->bulletExists = false;
+        }
+    }
+    else if (isShoot() && !bulletExists)
+    {
+        fire(vec);
+        bulletExists = true;
+    }
+
     if (collision)
         move(0, Game::windowScale.y * speed * 2);
     else if (direction == RIGHT)
@@ -81,4 +96,11 @@ bool Enemy::isShoot()
         ++shots;
     }
     return false;
+}
+
+void Enemy::fire(vector<Sprite*>& vec)
+{
+    this->bullet = new Bullet(BULLET, this->getPosition().x + 25, this->getPosition().y + 50);
+    bullet->setRotation(180);
+    vec.push_back(bullet);
 }
