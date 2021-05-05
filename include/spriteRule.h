@@ -28,12 +28,12 @@ struct spriteDemention
     }
 };
 
-enum TYPE {PLAYER, ENEMY, PLACE, PLACE2, SAUCER, BULLET, BARRIER, PLACE3, PLACE4};
+enum TYPE {PLAYER, ENEMY, SAUCER, BULLET, BARRIER, PLACE, PLACE2, PLACE3, PLACE4};
 const string textureFile = "data/Sprite_Texture_Sheet_150x150.png";
 const int NUM_TYPES = 5;
-const string SPRITE_TYPES[] = {"player", "enemy", "place", "place", "saucer", "bullet", "barrier", "place", "place"};
+const string SPRITE_TYPES[] = {"player", "enemy", "saucer", "bullet", "barrier", "place", "place", "place", "place"};
 const spriteDemention SPRITE_IMAGES[] = {spriteDemention(0,0,50,50), spriteDemention(50,0,50,50), spriteDemention(100,0,50,50), 
-                                         spriteDemention(0,50,50,50), spriteDemention(50,50,50,50), spriteDemention(100,50,50,50),
+                                         spriteDemention(0,50,10,35), spriteDemention(20,50,10,10), spriteDemention(100,50,50,50),
                                          spriteDemention(0,100,50,50), spriteDemention(50,100,1,1), spriteDemention(100,100,50,50)};
 
 class Sprite : public sf::Sprite

@@ -26,6 +26,7 @@ Game::Game()
 
     loadPlayer();
     loadEnemy();
+    loadBarrier();
 }
 
 Game::~Game()
@@ -219,6 +220,25 @@ void Game::loadEnemy()
             Enemy* enemy = new Enemy(row, col);
             enemies.push_back(enemy);
             addDraw(enemy);
+        }
+    }
+}
+void Game::loadBarrier()
+{
+    for (int set = 1; set <= 4; ++set)
+    {
+        for (int row = 0; row < 5; ++row)
+        {
+            for (int col = 0; col < 8; ++col)
+            {
+                if (!((row == 0 && col == 0) || (row == 0 && col == 7) || (row == 4 && col == 0) || (row == 4 && col == 7)))
+                {
+                    Vector2f pos = {((windowSize.x * PLAYPERCENT / 5 * set - 40.0f) + (10 * col)), ((windowSize.y * .7f) + (10 * row))};
+                    Barrier* barrier = new Barrier(row, col, pos);
+                    barriers.push_back(barrier);
+                    sDraw.push_back(barrier);
+                }
+            }
         }
     }
 }
