@@ -54,8 +54,10 @@ public:
     void scale(float factorX, float factorY);
     void scale(const Vector2f &factor);
 
-    // Public Variables
+    // void fire();
 
+    // Public Variables
+    
 protected:
     int spriteType;
     int health;
@@ -63,6 +65,7 @@ protected:
     spriteDemention hitBox;
     spriteDemention image;
     Texture texture;
+    
 
 private:
 
