@@ -68,7 +68,7 @@ void Enemy::swapTests(vector<Enemy*> &enemies)
 }
 bool Enemy::isShoot()
 {
-
+    return false;
     int shoot = rand() % 10;
     if (shots)
     {

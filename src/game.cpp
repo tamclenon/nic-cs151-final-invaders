@@ -17,16 +17,13 @@ Game::Game()
     fullScreen = 0;
     isDone = false;
 
-    showBorder = 0;
-    for (int i = 0; i < 4; ++i)
-        addWall(i);
-    addShadow({0,0}, {(windowSize.x * PLAYPERCENT),(windowSize.y * .7f)});
-    addShadow({0,(windowSize.y * .7f)}, {(windowSize.x * PLAYPERCENT),(windowSize.y * .2f)});
-    addShadow({0,(windowSize.y * .9f)}, {(windowSize.x * PLAYPERCENT),(windowSize.y * .1f)});
-
+    
+    loadWalls();
+    loadShadows();
     loadPlayer();
     loadEnemy();
     loadBarrier();
+    loadInfo();
 }
 
 Game::~Game()
@@ -68,9 +65,13 @@ void Game::input()
                     wall->scale(windowScale);
                     wall->setPosition({wall->getPosition().x * windowScale.x, wall->getPosition().y * windowScale.y});
                 }
-                walls.clear();
-                for (int i = 0; i < 4; ++i)
-                    addWall(i);
+                for (Text *text : info->drawText())
+                {
+                    text->scale(windowScale);
+                    text->setPosition({text->getPosition().x * windowScale.x, text->getPosition().y * windowScale.y});
+                }
+                for (Sprite* sprite : info->drawLives())
+                    sprite->scale(windowScale);
             }
             else if (event.key.code == Keyboard::F10)
             {
@@ -95,9 +96,13 @@ void Game::input()
                     wall->scale(windowScale);
                     wall->setPosition({wall->getPosition().x * windowScale.x, wall->getPosition().y * windowScale.y});
                 }
-                walls.clear();
-                for (int i = 0; i < 4; ++i)
-                    addWall(i);
+                for (Text *text : info->drawText())
+                {
+                    text->scale(windowScale);
+                    text->setPosition({text->getPosition().x * windowScale.x, text->getPosition().y * windowScale.y});
+                }
+                for (Sprite* sprite : info->drawLives())
+                    sprite->scale(windowScale);
                 windowScale.x = 1;
                 windowScale.y = 1;
             }
@@ -127,19 +132,23 @@ void Game::update()
     }
     if (swap)
         enemies[0]->swapTests(enemies);
+    info->update();
     input();
 }
 
 void Game::render()
 {
     // window.clear();
-
     for (RectangleShape* shadow : sShadow)
         window.draw(*shadow);
-    for (Sprite* sprite : sDraw)
-        window.draw(*sprite);
     for (RectangleShape* wall : walls)
         window.draw(*wall);
+    for (Sprite* sprite : sDraw)
+        window.draw(*sprite);
+    for (Text *text : info->drawText())
+        window.draw(*text);
+    for (Sprite* sprite : info->drawLives())
+        window.draw(*sprite);
     window.display();
 }
 
@@ -206,6 +215,21 @@ void Game::addShadow(const Vector2f &pos, const Vector2f &size)
     shadow->setFillColor({0,0,0});
     sShadow.push_back(shadow);
 }
+
+void Game::loadWalls()
+{
+    showBorder = 0;
+    for (int i = 0; i < 4; ++i)
+        addWall(i);
+}
+void Game::loadShadows()
+{
+    addShadow({0,0}, {(windowSize.x * PLAYPERCENT),(windowSize.y * .7f)});
+    addShadow({0,(windowSize.y * .7f)}, {(windowSize.x * PLAYPERCENT),(windowSize.y * .2f)});
+    addShadow({0,(windowSize.y * .9f)}, {(windowSize.x * PLAYPERCENT),(windowSize.y * .1f)});
+    addShadow({(windowSize.x * PLAYPERCENT),0}, {(windowSize.x * (1 - PLAYPERCENT)),(windowSize.y * .3f)});
+    addShadow({(windowSize.x * PLAYPERCENT),(windowSize.y * .8f)}, {(windowSize.x * (1 - PLAYPERCENT)),(windowSize.y * .2f)});
+}
 void Game::loadPlayer()
 {
     player = new Player;
@@ -241,4 +265,8 @@ void Game::loadBarrier()
             }
         }
     }
+}
+void Game::loadInfo()
+{
+    info = new Info(player);
 }
