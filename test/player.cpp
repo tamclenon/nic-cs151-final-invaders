@@ -4,6 +4,7 @@
 Player::Player() : Sprite(PLAYER)
 {
     speed = 5;
+    health = 3;
     setPosition((Game::windowSize.x * PLAYPERCENT / 2) - 25, Game::windowSize.y * .9 + Game::windowSize.y * .05 - 25);
 }
 

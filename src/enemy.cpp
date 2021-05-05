@@ -8,9 +8,8 @@ Enemy::Enemy(int row, int col) : Sprite(ENEMY)
     direction = RIGHT;
     speed = 2;
     column = col;
+    health = 1;
     setPosition({col * 60.0f, row * 60.0f});
-    // if (row == 0 && col == 10)
-    //     controlBumper = this;
 }
 
 Enemy::~Enemy()
@@ -30,7 +29,7 @@ void Enemy::update()
     {
         move(Game::windowScale.x * -speed, 0);
     }
-    if (isShoot)
+    if (isShoot())
     {
         cout << "Shoot" << endl;
     }

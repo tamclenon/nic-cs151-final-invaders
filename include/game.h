@@ -5,6 +5,7 @@
 #include "spriteRule.h"
 #include "player.h"
 #include "enemy.h"
+#include "barrier.h"
 
 #include <vector>
 
@@ -46,6 +47,7 @@ public:
     void addShadow(const Vector2f &pos, const Vector2f &size);
     void loadPlayer();
     void loadEnemy();
+    void loadBarrier();
 
     static Vector2f windowScale;
     static Vector2u windowSize;
@@ -62,6 +64,7 @@ private:
     vector<Sprite*> sDraw;
     Player* player;
     vector<Enemy*> enemies;
+    vector<Barrier*> barriers;
 };
 
 
