@@ -112,7 +112,7 @@ void Game::input()
                 for (RectangleShape *wall : walls)
                     wall->setFillColor({255,255,255});
             }
-            else if ((event.key.code == Keyboard::F9))
+            else if (event.key.code == Keyboard::F9)
             {
                 showBorder = 0;
                 for (RectangleShape *wall : walls)
@@ -124,11 +124,11 @@ void Game::input()
 
 void Game::update()
 {
-    player->update();
+    player->update(this->sDraw);
     bool swap = enemies[0]->testCollision();
     for (Enemy* enemy : enemies)
     {
-        enemy->update();
+        enemy->update(this->sDraw);
     }
     if (swap)
         enemies[0]->swapTests(enemies);
@@ -140,6 +140,21 @@ void Game::render()
 {
     // window.clear();
     for (RectangleShape* shadow : sShadow)
+    {
+        if (shadow != nullptr)
+            window.draw(*shadow);
+    }
+        
+    for (Sprite* sprite : sDraw)
+    {
+        if (sprite != nullptr)
+            window.draw(*sprite);
+    }
+    for (RectangleShape* wall : walls)
+    {
+        if (wall != nullptr)
+            window.draw(*wall);
+    }
         window.draw(*shadow);
     for (RectangleShape* wall : walls)
         window.draw(*wall);

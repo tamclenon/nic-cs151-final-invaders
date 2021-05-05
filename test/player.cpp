@@ -10,10 +10,11 @@ Player::Player() : Sprite(PLAYER)
 
 Player::~Player()
 {
-
+    // delete bullet;
+    // bullet = nullptr;
 }
 
-void Player::update()
+void Player::update(vector<Sprite*>& vec)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
@@ -27,4 +28,30 @@ void Player::update()
         if (isCollision(Game::walls[LEFT]))
             move(Game::windowScale.x * speed, 0);
     }
+
+    
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !(this->bulletExists))
+    {
+        fire(vec);
+        this->bulletExists = true;
+    }
+    if (bulletExists)
+    {
+        float back = -5;
+        this->bullet->move(0, back);
+    }
+    if ((this->bullet != nullptr) && bulletExists)
+    {
+        if (this->bullet->getPosition().y <= -50)
+        {
+            this->bulletExists = false;
+        }
+    }
+}
+
+
+void Player::fire(vector<Sprite*>& vec)
+{
+    this->bullet = new Bullet(BULLET, this->getPosition().x + 25, this->getPosition().y);
+    vec.push_back(this->bullet);
 }
