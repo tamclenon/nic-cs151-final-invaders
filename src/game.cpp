@@ -1,7 +1,4 @@
 #include "game.h"
-#include <iostream>
-using namespace std;
-
 
 
 Game::Game()
@@ -206,7 +203,6 @@ void Game::addWall(int side)
     wall->setPosition(pos);
     wall->setFillColor({0,0,0});
     walls.push_back(wall);
-    cout << "Wall" << side << endl;
 }
 void Game::addShadow(const Vector2f &pos, const Vector2f &size)
 {

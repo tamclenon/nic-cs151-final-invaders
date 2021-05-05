@@ -1,7 +1,5 @@
 #include "enemy.h"
 #include "game.h"
-#include <iostream>
-using namespace std;
 
 Enemy::Enemy(int row, int col) : Sprite(ENEMY)
 {
@@ -31,7 +29,7 @@ void Enemy::update()
     }
     if (isShoot())
     {
-        cout << "Shoot" << endl;
+        
     }
 }
 bool Enemy::testCollision()

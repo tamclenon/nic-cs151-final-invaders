@@ -1,5 +1,4 @@
 #include "spriteRule.h"
-using namespace std;
 
 Sprite::Sprite()
 {
@@ -7,9 +6,7 @@ Sprite::Sprite()
 }
 Sprite::Sprite(int type)
 {
-    cout << type << endl;
     spriteType = type;
-    cout << SPRITE_TYPES[type] << endl;
     image = SPRITE_IMAGES[type];
     loadTexture(textureFile);
 }
