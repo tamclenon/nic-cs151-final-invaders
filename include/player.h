@@ -2,6 +2,8 @@
 #define PLAYER_H
 
 #include "spriteRule.h"
+#include "bullet.h"
+
 #include <vector>
 using std::vector;
 
@@ -12,14 +14,15 @@ public:
     Player();
     virtual ~Player();
 
-    virtual void update(vector<Sprite*>& vec);
-    void fire(vector<Sprite*>& vec);
+    virtual void update();
+    Bullet* fire();
+    bool bulletExists();
 
 protected:
-    Sprite* bullet;
+    Bullet* bullet;
 
 private:
-    bool bulletExists;
+    
 
 
 

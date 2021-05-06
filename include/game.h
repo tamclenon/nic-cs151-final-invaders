@@ -52,11 +52,15 @@ public:
     void loadEnemy();
     void loadBarrier();
     void loadInfo();
+    void removeDead();
+    void resetEnemies();
+    void restart();
 
     static Vector2f windowScale;
     static Vector2u windowSize;
     static vector<RectangleShape*> sShadow;
     static vector<RectangleShape*> walls;
+    static Info* info;
 
 private:
     RenderWindow window;
@@ -68,8 +72,9 @@ private:
     vector<Sprite*> sDraw;
     Player* player;
     vector<Enemy*> enemies;
+    vector<Bullet*> bullets;
     vector<Barrier*> barriers;
-    Info* info;
+    bool isPaused;
 };
 
 

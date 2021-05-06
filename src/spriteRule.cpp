@@ -1,5 +1,4 @@
 #include "spriteRule.h"
-using namespace std;
 
 Sprite::Sprite()
 {
@@ -7,15 +6,13 @@ Sprite::Sprite()
 }
 Sprite::Sprite(int type)
 {
-    cout << type << endl;
     spriteType = type;
-    cout << SPRITE_TYPES[type] << endl;
     image = SPRITE_IMAGES[type];
     loadTexture(textureFile);
 }
 Sprite::~Sprite()
 {
-    delete this;
+
 }
 
 void Sprite::loadTexture(string file)
@@ -39,9 +36,22 @@ void Sprite::setHealth(int h)
 {
     health = h;
 }
+void Sprite::decHealth()
+{
+    if (health > 0)
+        --health;
+}
+void Sprite::incHealth()
+{
+    ++health;
+}
 int Sprite::getHealth()
 {
     return health;
+}
+int Sprite::getPoints()
+{
+    return points;
 }
 
 void Sprite::scale(float factorX, float factorY)

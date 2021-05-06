@@ -2,19 +2,23 @@
 #define BULLET_H
 #include "spriteRule.h"
 
+#include <vector>
+
+using std::vector;
+
 
 
 class Bullet : public Sprite
 {
 public:
     Bullet();
-    Bullet(int type, float spawnX, float spawnY);
+    Bullet(float spawnX, float spawnY, int from);
     virtual ~Bullet();
 
-
+    virtual void update(vector<Sprite*> &sDraw);
 
 private:
-
+    int firedFrom;
 
 };
 
