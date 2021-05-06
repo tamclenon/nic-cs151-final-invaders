@@ -382,10 +382,9 @@ void Game::resetEnemies()
 }
 void Game::restart()
 {
+    delete info;
     resetEnemies();
     player->setHealth(3);
-    info->setScore(0);
-    info->setLevel(0);
     for (Bullet* bullet : bullets)
         bullet->setHealth(0);
     for (Barrier* barrier : barriers)
@@ -396,4 +395,5 @@ void Game::restart()
             addDraw(barrier);
         }
     }
+    loadInfo();
 }
