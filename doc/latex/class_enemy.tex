@@ -1,0 +1,218 @@
+\hypertarget{class_enemy}{}\doxysection{Enemy Class Reference}
+\label{class_enemy}\index{Enemy@{Enemy}}
+
+
+\mbox{\hyperlink{class_enemy}{Enemy}} class.  
+
+
+
+
+{\ttfamily \#include $<$enemy.\+h$>$}
+
+Inheritance diagram for Enemy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_enemy}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_enemy_ac88202c777ce493d02d3299c4f1486f3}{Enemy}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_enemy}{Enemy}}\+:\+: \mbox{\hyperlink{class_enemy}{Enemy}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_enemy_ac0eec4755e28c02688065f9657150ac3}\label{class_enemy_ac0eec4755e28c02688065f9657150ac3}} 
+virtual \mbox{\hyperlink{class_enemy_ac0eec4755e28c02688065f9657150ac3}{$\sim$\+Enemy}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{class_enemy}{Enemy}}\+:\+: \mbox{\hyperlink{class_enemy}{Enemy}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_enemy_ad55ee71b5a8c23fbd00b3c368b90cc64}\label{class_enemy_ad55ee71b5a8c23fbd00b3c368b90cc64}} 
+virtual void \mbox{\hyperlink{class_enemy_ad55ee71b5a8c23fbd00b3c368b90cc64}{update}} ()
+\begin{DoxyCompactList}\small\item\em Update the enemy state. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_enemy_aa4a65f6812c77e80ccba43f2e227efdf}{test\+Collision}} ()
+\begin{DoxyCompactList}\small\item\em Test collision for enemy instances. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_enemy_a6b9b465285b1eb196c939a412be16f18}{swap\+Tests}} (vector$<$ \mbox{\hyperlink{class_enemy}{Enemy}} $\ast$ $>$ \&enemies)
+\item 
+bool \mbox{\hyperlink{class_enemy_aa93025f9295808ac476c49094aa9aa34}{is\+Shoot}} ()
+\begin{DoxyCompactList}\small\item\em Function to meter enemies ability to shoot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_enemy_a475d1d9cc16b19641ede3929f4a2321b}{reset\+Shots}} (int s)
+\begin{DoxyCompactList}\small\item\em Resets the enemies shots. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_bullet}{Bullet}} $\ast$ \mbox{\hyperlink{class_enemy_a7b3e8ec23970fcba326eccd63813f0e3}{fire}} ()
+\begin{DoxyCompactList}\small\item\em Make enemy instance fire a bulle. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_enemy_affac3ad5c293f922fda4bd050a2e33ae}{bullet\+Exists}} ()
+\begin{DoxyCompactList}\small\item\em Check whether an enemy bullet is on screen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_enemy_a9a1297771083d2fcff14bbdd4bb28a66}\label{class_enemy_a9a1297771083d2fcff14bbdd4bb28a66}} 
+void \mbox{\hyperlink{class_enemy_a9a1297771083d2fcff14bbdd4bb28a66}{death\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Count the number of enemies defeated. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_enemy_a526139497d7cb52d21019070733e5dd3}{level\+Over}} ()
+\begin{DoxyCompactList}\small\item\em Checks if all enemies are dead. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_enemy_acd259c92d67adc99076c8b5fb7b72d94}{set\+Column}} (int col)
+\begin{DoxyCompactList}\small\item\em Sets the column of the enemy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_enemy_adfaa26c7d75696c6fd384a7604123f78}{set\+Direction}} (int d)
+\begin{DoxyCompactList}\small\item\em Sets the direction of enemy movement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_enemy_ad1a18f9040da074ad8052124d3a7e207}\label{class_enemy_ad1a18f9040da074ad8052124d3a7e207}} 
+\mbox{\hyperlink{class_bullet}{Bullet}} $\ast$ {\bfseries bullet}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_enemy}{Enemy}} class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_enemy_ac88202c777ce493d02d3299c4f1486f3}\label{class_enemy_ac88202c777ce493d02d3299c4f1486f3}} 
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{Enemy()}{Enemy()}}
+{\footnotesize\ttfamily Enemy\+::\+Enemy (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_enemy}{Enemy}}\+:\+: \mbox{\hyperlink{class_enemy}{Enemy}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The row of the enemy grid in which this instance will be placed \\
+\hline
+{\em col} & The column of the enemy grid in which this instance will be placed \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_enemy_affac3ad5c293f922fda4bd050a2e33ae}\label{class_enemy_affac3ad5c293f922fda4bd050a2e33ae}} 
+\index{Enemy@{Enemy}!bulletExists@{bulletExists}}
+\index{bulletExists@{bulletExists}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{bulletExists()}{bulletExists()}}
+{\footnotesize\ttfamily bool Enemy\+::bullet\+Exists (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check whether an enemy bullet is on screen. 
+
+\begin{DoxyReturn}{Returns}
+true There is a bullet on screen 
+
+false There is not a bullet on screen 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_enemy_a7b3e8ec23970fcba326eccd63813f0e3}\label{class_enemy_a7b3e8ec23970fcba326eccd63813f0e3}} 
+\index{Enemy@{Enemy}!fire@{fire}}
+\index{fire@{fire}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{fire()}{fire()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_bullet}{Bullet}} $\ast$ Enemy\+::fire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Make enemy instance fire a bulle. 
+
+\begin{DoxyReturn}{Returns}
+Bullet$\ast$ Pointer to member variable of type \mbox{\hyperlink{class_bullet}{Bullet}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_enemy_aa93025f9295808ac476c49094aa9aa34}\label{class_enemy_aa93025f9295808ac476c49094aa9aa34}} 
+\index{Enemy@{Enemy}!isShoot@{isShoot}}
+\index{isShoot@{isShoot}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{isShoot()}{isShoot()}}
+{\footnotesize\ttfamily bool Enemy\+::is\+Shoot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to meter enemies ability to shoot. 
+
+\begin{DoxyReturn}{Returns}
+true enemy can shoot 
+
+false enemy cannot shoot 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_enemy_a526139497d7cb52d21019070733e5dd3}\label{class_enemy_a526139497d7cb52d21019070733e5dd3}} 
+\index{Enemy@{Enemy}!levelOver@{levelOver}}
+\index{levelOver@{levelOver}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{levelOver()}{levelOver()}}
+{\footnotesize\ttfamily bool Enemy\+::level\+Over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if all enemies are dead. 
+
+\begin{DoxyReturn}{Returns}
+true All enemies are dead (level is over) 
+
+false All enemies are not dead (level is not over) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_enemy_a475d1d9cc16b19641ede3929f4a2321b}\label{class_enemy_a475d1d9cc16b19641ede3929f4a2321b}} 
+\index{Enemy@{Enemy}!resetShots@{resetShots}}
+\index{resetShots@{resetShots}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{resetShots()}{resetShots()}}
+{\footnotesize\ttfamily void Enemy\+::reset\+Shots (\begin{DoxyParamCaption}\item[{int}]{s }\end{DoxyParamCaption})}
+
+
+
+Resets the enemies shots. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The value to set shots to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_enemy_acd259c92d67adc99076c8b5fb7b72d94}\label{class_enemy_acd259c92d67adc99076c8b5fb7b72d94}} 
+\index{Enemy@{Enemy}!setColumn@{setColumn}}
+\index{setColumn@{setColumn}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{setColumn()}{setColumn()}}
+{\footnotesize\ttfamily void Enemy\+::set\+Column (\begin{DoxyParamCaption}\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+Sets the column of the enemy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em col} & The column to place the enemy \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_enemy_adfaa26c7d75696c6fd384a7604123f78}\label{class_enemy_adfaa26c7d75696c6fd384a7604123f78}} 
+\index{Enemy@{Enemy}!setDirection@{setDirection}}
+\index{setDirection@{setDirection}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{setDirection()}{setDirection()}}
+{\footnotesize\ttfamily void Enemy\+::set\+Direction (\begin{DoxyParamCaption}\item[{int}]{d }\end{DoxyParamCaption})}
+
+
+
+Sets the direction of enemy movement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & The number representing the direction \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_enemy_a6b9b465285b1eb196c939a412be16f18}\label{class_enemy_a6b9b465285b1eb196c939a412be16f18}} 
+\index{Enemy@{Enemy}!swapTests@{swapTests}}
+\index{swapTests@{swapTests}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{swapTests()}{swapTests()}}
+{\footnotesize\ttfamily void Enemy\+::swap\+Tests (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_enemy}{Enemy}} $\ast$ $>$ \&}]{enemies }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em enemies} & Vector of enemy instances \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_enemy_aa4a65f6812c77e80ccba43f2e227efdf}\label{class_enemy_aa4a65f6812c77e80ccba43f2e227efdf}} 
+\index{Enemy@{Enemy}!testCollision@{testCollision}}
+\index{testCollision@{testCollision}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{testCollision()}{testCollision()}}
+{\footnotesize\ttfamily bool Enemy\+::test\+Collision (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Test collision for enemy instances. 
+
+\begin{DoxyReturn}{Returns}
+true There is a collision 
+
+false There is not a collision 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{enemy_8h}{enemy.\+h}}\item 
+src/\mbox{\hyperlink{enemy_8cpp}{enemy.\+cpp}}\item 
+src/\mbox{\hyperlink{main_8cpp}{main.\+cpp}}\end{DoxyCompactItemize}

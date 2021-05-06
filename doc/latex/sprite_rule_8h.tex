@@ -1,0 +1,78 @@
+\hypertarget{sprite_rule_8h}{}\doxysection{include/sprite\+Rule.h File Reference}
+\label{sprite_rule_8h}\index{include/spriteRule.h@{include/spriteRule.h}}
+
+
+\mbox{\hyperlink{class_sprite}{Sprite}} class declaration file.  
+
+
+{\ttfamily \#include $<$SFML/\+Graphics.\+hpp$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structsprite_demention}{sprite\+Demention}}
+\begin{DoxyCompactList}\small\item\em Struct for the dimensions of the sprite. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_sprite}{Sprite}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_sprite}{Sprite}} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{sprite_rule_8h_a0bc6723d5d4776ab7cdc646728b775f7}\label{sprite_rule_8h_a0bc6723d5d4776ab7cdc646728b775f7}} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries PLAYER}
+, {\bfseries ENEMY}
+, {\bfseries SAUCER}
+, {\bfseries BULLET}
+, \newline
+{\bfseries BARRIER}
+, {\bfseries PLACE}
+, {\bfseries PLACE2}
+, {\bfseries PLACE3}
+, \newline
+{\bfseries PLACE4}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{sprite_rule_8h_a5e233f59b13f080ca3426a686821013d}\label{sprite_rule_8h_a5e233f59b13f080ca3426a686821013d}} 
+const string {\bfseries texture\+File} = \char`\"{}data/Sprite\+\_\+\+Texture\+\_\+\+Sheet\+\_\+150x150.\+png\char`\"{}
+\item 
+\mbox{\Hypertarget{sprite_rule_8h_a508fdeb9d6e0ff6881d801f20766ea4f}\label{sprite_rule_8h_a508fdeb9d6e0ff6881d801f20766ea4f}} 
+const int {\bfseries NUM\+\_\+\+TYPES} = 5
+\item 
+\mbox{\Hypertarget{sprite_rule_8h_a59f4ba65ac587b4c369e922c3b10c495}\label{sprite_rule_8h_a59f4ba65ac587b4c369e922c3b10c495}} 
+const string {\bfseries SPRITE\+\_\+\+TYPES} \mbox{[}$\,$\mbox{]} = \{\char`\"{}player\char`\"{}, \char`\"{}enemy\char`\"{}, \char`\"{}saucer\char`\"{}, \char`\"{}bullet\char`\"{}, \char`\"{}barrier\char`\"{}, \char`\"{}place\char`\"{}, \char`\"{}place\char`\"{}, \char`\"{}place\char`\"{}, \char`\"{}place\char`\"{}\}
+\item 
+const \mbox{\hyperlink{structsprite_demention}{sprite\+Demention}} {\bfseries SPRITE\+\_\+\+IMAGES} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_sprite}{Sprite}} class declaration file. 
+
+\begin{DoxyAuthor}{Author}
+Shaun Martin 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2021-\/05-\/05
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2021 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{sprite_rule_8h_a0773bd9454aa8d9d31c0b6886472050c}\label{sprite_rule_8h_a0773bd9454aa8d9d31c0b6886472050c}} 
+\index{spriteRule.h@{spriteRule.h}!SPRITE\_IMAGES@{SPRITE\_IMAGES}}
+\index{SPRITE\_IMAGES@{SPRITE\_IMAGES}!spriteRule.h@{spriteRule.h}}
+\doxysubsubsection{\texorpdfstring{SPRITE\_IMAGES}{SPRITE\_IMAGES}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structsprite_demention}{sprite\+Demention}} SPRITE\+\_\+\+IMAGES\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{\mbox{\hyperlink{structsprite_demention}{spriteDemention}}(0,0,50,50), \mbox{\hyperlink{structsprite_demention}{spriteDemention}}(50,0,50,50), \mbox{\hyperlink{structsprite_demention}{spriteDemention}}(100,0,50,50), }
+\DoxyCodeLine{                                         \mbox{\hyperlink{structsprite_demention}{spriteDemention}}(0,50,10,35), \mbox{\hyperlink{structsprite_demention}{spriteDemention}}(20,50,10,10), \mbox{\hyperlink{structsprite_demention}{spriteDemention}}(100,50,50,50),}
+\DoxyCodeLine{                                         \mbox{\hyperlink{structsprite_demention}{spriteDemention}}(0,100,50,50), \mbox{\hyperlink{structsprite_demention}{spriteDemention}}(50,100,1,1), \mbox{\hyperlink{structsprite_demention}{spriteDemention}}(100,100,50,50)\}}
+
+\end{DoxyCode}

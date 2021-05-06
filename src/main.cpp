@@ -1,3 +1,12 @@
+/**
+ * @file main.cpp
+ * @author Shaun Martin, Toby Mclenon
+ * @brief Space invaders game
+ * @date 2021-05-06
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include "game.h"
 #include "spriteRule.h"
 #include "enemy.h"

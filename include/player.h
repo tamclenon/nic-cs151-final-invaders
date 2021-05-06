@@ -1,3 +1,12 @@
+/**
+ * @file player.h
+ * @author Toby Mclenon
+ * @brief Player class declaration file
+ * @date 2021-05-05
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #ifndef PLAYER_H
 #define PLAYER_H
 
@@ -7,6 +16,10 @@
 #include <vector>
 using std::vector;
 
+/**
+ * @brief Player class
+ * 
+ */
 class Player : public Sprite
 {
 

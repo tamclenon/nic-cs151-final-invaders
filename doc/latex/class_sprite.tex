@@ -1,0 +1,248 @@
+\hypertarget{class_sprite}{}\doxysection{Sprite Class Reference}
+\label{class_sprite}\index{Sprite@{Sprite}}
+
+
+\mbox{\hyperlink{class_sprite}{Sprite}} class.  
+
+
+
+
+{\ttfamily \#include $<$sprite\+Rule.\+h$>$}
+
+Inheritance diagram for Sprite\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_sprite}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_sprite_a12cba3ac1868418add3c4d95ce87e615}\label{class_sprite_a12cba3ac1868418add3c4d95ce87e615}} 
+\mbox{\hyperlink{class_sprite_a12cba3ac1868418add3c4d95ce87e615}{Sprite}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_sprite}{Sprite}}\+:\+: \mbox{\hyperlink{class_sprite}{Sprite}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sprite_afee26e547b0ab313c1c78cf2c8abfd86}{Sprite}} (int type)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_sprite}{Sprite}}\+:\+: \mbox{\hyperlink{class_sprite}{Sprite}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_a8accab430f9d90ae5117b57d67e32b84}\label{class_sprite_a8accab430f9d90ae5117b57d67e32b84}} 
+virtual \mbox{\hyperlink{class_sprite_a8accab430f9d90ae5117b57d67e32b84}{$\sim$\+Sprite}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{class_sprite}{Sprite}}\+:\+: \mbox{\hyperlink{class_sprite}{Sprite}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sprite_ac1f933653b81d9e4f6e397e3d81ed7af}{load\+Texture}} (string file)
+\begin{DoxyCompactList}\small\item\em Loads the sprite texture file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sprite_ac5615be962b15770cafd3831f7058a43}{is\+Collision}} (\mbox{\hyperlink{class_sprite}{Sprite}} $\ast$spr)
+\begin{DoxyCompactList}\small\item\em Checks for collision. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sprite_a9e3408622de626c29171ddcdc3656c41}{is\+Collision}} (\mbox{\hyperlink{classsf_1_1_rectangle_shape}{Rectangle\+Shape}} $\ast$rec)
+\begin{DoxyCompactList}\small\item\em Checks collision on barriers. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sprite_a999be799f252ef8d19bd88adb73b25e4}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the type of sprite. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sprite_a6ab18e5345aec1a99c725a1a0e1cfb41}{set\+Health}} (int h)
+\begin{DoxyCompactList}\small\item\em Sets the health of the sprite. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_a2327644b67cee22a12ac5a7bab2edd71}\label{class_sprite_a2327644b67cee22a12ac5a7bab2edd71}} 
+void \mbox{\hyperlink{class_sprite_a2327644b67cee22a12ac5a7bab2edd71}{dec\+Health}} ()
+\begin{DoxyCompactList}\small\item\em Decrements sprite instance\textquotesingle{}s health. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_a1e2c55a7389e09ec14b9fb58b28c5517}\label{class_sprite_a1e2c55a7389e09ec14b9fb58b28c5517}} 
+void \mbox{\hyperlink{class_sprite_a1e2c55a7389e09ec14b9fb58b28c5517}{inc\+Health}} ()
+\begin{DoxyCompactList}\small\item\em Increments sprite instance\textquotesingle{}s health. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sprite_aee48f9e07ec29bda2ce679a85adb26f7}{get\+Health}} ()
+\begin{DoxyCompactList}\small\item\em Gets health of sprite instance. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sprite_aeb6a0d859dfa89c3056b9441c2d36203}{get\+Points}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current points. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sprite_a25742e185a9945399ae11795c57754e5}{scale}} (float factorX, float factorY)
+\begin{DoxyCompactList}\small\item\em Scales the sprite size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sprite_ab4aedee45748bae7a9dd818d4d5e6c55}{scale}} (const Vector2f \&factor)
+\begin{DoxyCompactList}\small\item\em Scales the sprite position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_sprite_a1975d95e43955c4ec1f98b2779e76225}\label{class_sprite_a1975d95e43955c4ec1f98b2779e76225}} 
+int {\bfseries points}
+\item 
+\mbox{\Hypertarget{class_sprite_ac718bb64f23274b4a06a531a8a13c199}\label{class_sprite_ac718bb64f23274b4a06a531a8a13c199}} 
+int {\bfseries sprite\+Type}
+\item 
+\mbox{\Hypertarget{class_sprite_a0fed09b49c70b98eab58fdde6764f077}\label{class_sprite_a0fed09b49c70b98eab58fdde6764f077}} 
+int {\bfseries health}
+\item 
+\mbox{\Hypertarget{class_sprite_a317b3ba0540a01a4138be1a435a82566}\label{class_sprite_a317b3ba0540a01a4138be1a435a82566}} 
+int {\bfseries speed}
+\item 
+\mbox{\Hypertarget{class_sprite_a53ea3d52ca06bedb4bf31a6ad9892a0e}\label{class_sprite_a53ea3d52ca06bedb4bf31a6ad9892a0e}} 
+\mbox{\hyperlink{structsprite_demention}{sprite\+Demention}} {\bfseries hit\+Box}
+\item 
+\mbox{\Hypertarget{class_sprite_a9e2fad9066caedbfe20d1797643dd893}\label{class_sprite_a9e2fad9066caedbfe20d1797643dd893}} 
+\mbox{\hyperlink{structsprite_demention}{sprite\+Demention}} {\bfseries image}
+\item 
+\mbox{\Hypertarget{class_sprite_aa4978b284ebaae7225869d238dcb32cb}\label{class_sprite_aa4978b284ebaae7225869d238dcb32cb}} 
+\mbox{\hyperlink{classsf_1_1_texture}{Texture}} {\bfseries texture}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_sprite}{Sprite}} class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_sprite_afee26e547b0ab313c1c78cf2c8abfd86}\label{class_sprite_afee26e547b0ab313c1c78cf2c8abfd86}} 
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{Sprite()}{Sprite()}}
+{\footnotesize\ttfamily Sprite\+::\+Sprite (\begin{DoxyParamCaption}\item[{int}]{type }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_sprite}{Sprite}}\+:\+: \mbox{\hyperlink{class_sprite}{Sprite}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Type of sprite to be created (player, enemy, etc.) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sprite_aee48f9e07ec29bda2ce679a85adb26f7}\label{class_sprite_aee48f9e07ec29bda2ce679a85adb26f7}} 
+\index{Sprite@{Sprite}!getHealth@{getHealth}}
+\index{getHealth@{getHealth}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{getHealth()}{getHealth()}}
+{\footnotesize\ttfamily int Sprite\+::get\+Health (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets health of sprite instance. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_aeb6a0d859dfa89c3056b9441c2d36203}\label{class_sprite_aeb6a0d859dfa89c3056b9441c2d36203}} 
+\index{Sprite@{Sprite}!getPoints@{getPoints}}
+\index{getPoints@{getPoints}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{getPoints()}{getPoints()}}
+{\footnotesize\ttfamily int Sprite\+::get\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the current points. 
+
+\begin{DoxyReturn}{Returns}
+int Number of points 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_a999be799f252ef8d19bd88adb73b25e4}\label{class_sprite_a999be799f252ef8d19bd88adb73b25e4}} 
+\index{Sprite@{Sprite}!getType@{getType}}
+\index{getType@{getType}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily int Sprite\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the type of sprite. 
+
+\begin{DoxyReturn}{Returns}
+int The sprite type of this instance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_a9e3408622de626c29171ddcdc3656c41}\label{class_sprite_a9e3408622de626c29171ddcdc3656c41}} 
+\index{Sprite@{Sprite}!isCollision@{isCollision}}
+\index{isCollision@{isCollision}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{isCollision()}{isCollision()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Sprite\+::is\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsf_1_1_rectangle_shape}{Rectangle\+Shape}} $\ast$}]{rec }\end{DoxyParamCaption})}
+
+
+
+Checks collision on barriers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rec} & The shape to be tested \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true There is a collision 
+
+false There is not a collision 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_ac5615be962b15770cafd3831f7058a43}\label{class_sprite_ac5615be962b15770cafd3831f7058a43}} 
+\index{Sprite@{Sprite}!isCollision@{isCollision}}
+\index{isCollision@{isCollision}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{isCollision()}{isCollision()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Sprite\+::is\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sprite}{Sprite}} $\ast$}]{spr }\end{DoxyParamCaption})}
+
+
+
+Checks for collision. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spr} & The sprite to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true There is a collision 
+
+false There is not a collision 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_ac1f933653b81d9e4f6e397e3d81ed7af}\label{class_sprite_ac1f933653b81d9e4f6e397e3d81ed7af}} 
+\index{Sprite@{Sprite}!loadTexture@{loadTexture}}
+\index{loadTexture@{loadTexture}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{loadTexture()}{loadTexture()}}
+{\footnotesize\ttfamily void Sprite\+::load\+Texture (\begin{DoxyParamCaption}\item[{string}]{file }\end{DoxyParamCaption})}
+
+
+
+Loads the sprite texture file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The texture file to be loaded \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sprite_ab4aedee45748bae7a9dd818d4d5e6c55}\label{class_sprite_ab4aedee45748bae7a9dd818d4d5e6c55}} 
+\index{Sprite@{Sprite}!scale@{scale}}
+\index{scale@{scale}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{scale()}{scale()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Sprite\+::scale (\begin{DoxyParamCaption}\item[{const Vector2f \&}]{factor }\end{DoxyParamCaption})}
+
+
+
+Scales the sprite position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em factor} & The amount to scale the x and y position of the sprite \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sprite_a25742e185a9945399ae11795c57754e5}\label{class_sprite_a25742e185a9945399ae11795c57754e5}} 
+\index{Sprite@{Sprite}!scale@{scale}}
+\index{scale@{scale}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{scale()}{scale()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Sprite\+::scale (\begin{DoxyParamCaption}\item[{float}]{factorX,  }\item[{float}]{factorY }\end{DoxyParamCaption})}
+
+
+
+Scales the sprite size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em factorX} & The percentage to scale the sprite\textquotesingle{}s x value \\
+\hline
+{\em factorY} & The percentage to scale the sprite\textquotesingle{}s y value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sprite_a6ab18e5345aec1a99c725a1a0e1cfb41}\label{class_sprite_a6ab18e5345aec1a99c725a1a0e1cfb41}} 
+\index{Sprite@{Sprite}!setHealth@{setHealth}}
+\index{setHealth@{setHealth}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{setHealth()}{setHealth()}}
+{\footnotesize\ttfamily void Sprite\+::set\+Health (\begin{DoxyParamCaption}\item[{int}]{h }\end{DoxyParamCaption})}
+
+
+
+Sets the health of the sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{sprite_rule_8h}{sprite\+Rule.\+h}}\item 
+src/\mbox{\hyperlink{sprite_rule_8cpp}{sprite\+Rule.\+cpp}}\end{DoxyCompactItemize}
