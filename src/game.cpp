@@ -461,6 +461,7 @@ void Game::resetEnemies()
  */
 void Game::restart()
 {
+    info->saveHighScore();
     delete info;
     resetEnemies();
     player->setHealth(3);
