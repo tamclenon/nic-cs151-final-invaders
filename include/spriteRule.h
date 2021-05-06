@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 #include <string>
-#include <iostream>
+
 using std::string;
 
 using sf::Texture;
@@ -49,7 +49,10 @@ public:
     bool isCollision(RectangleShape* rec);
     int getType();
     void setHealth(int h);
+    void decHealth();
+    void incHealth();
     int getHealth();
+    int getPoints();
     // Overloaded Functions
     void scale(float factorX, float factorY);
     void scale(const Vector2f &factor);
@@ -59,6 +62,7 @@ public:
     // Public Variables
     
 protected:
+    int points;
     int spriteType;
     int health;
     int speed;

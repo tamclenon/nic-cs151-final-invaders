@@ -6,6 +6,7 @@ Player::Player() : Sprite(PLAYER)
     speed = 5;
     health = 3;
     setPosition((Game::windowSize.x * PLAYPERCENT / 2) - 25, Game::windowSize.y * .9 + Game::windowSize.y * .05 - 25);
+    bullet = nullptr;
 }
 
 Player::~Player()
@@ -14,7 +15,7 @@ Player::~Player()
     // bullet = nullptr;
 }
 
-void Player::update(vector<Sprite*>& vec)
+void Player::update()
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
@@ -28,30 +29,20 @@ void Player::update(vector<Sprite*>& vec)
         if (isCollision(Game::walls[LEFT]))
             move(Game::windowScale.x * speed, 0);
     }
-
-    
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !(this->bulletExists))
+    if (bullet != nullptr && bullet->getHealth() == 0)
     {
-        fire(vec);
-        this->bulletExists = true;
-    }
-    if (bulletExists)
-    {
-        float back = -5;
-        this->bullet->move(0, back);
-    }
-    if ((this->bullet != nullptr) && bulletExists)
-    {
-        if (this->bullet->getPosition().y <= -50)
-        {
-            this->bulletExists = false;
-        }
+        delete bullet;
+        bullet = nullptr;
     }
 }
 
 
-void Player::fire(vector<Sprite*>& vec)
+Bullet* Player::fire()
 {
-    this->bullet = new Bullet(BULLET, this->getPosition().x + 25, this->getPosition().y);
-    vec.push_back(this->bullet);
+    bullet = new Bullet(getPosition().x + 20, getPosition().y - 50, PLAYER);
+    return bullet;
+}
+bool Player::bulletExists()
+{
+    return bullet != nullptr;
 }

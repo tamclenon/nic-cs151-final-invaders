@@ -1,24 +1,33 @@
 #include "game.h"
+#include "spriteRule.h"
 #include "enemy.h"
 #include "player.h"
+#include "bullet.h"
+#include "barrier.h"
+#include "infoBoard.h"
 
 #include <time.h>
-#include <unistd.h>
+#include <stdlib.h>
+// #include <iostream>
+// using std::cout;
 
-
+using std::srand;
+using std::time;
 
 Vector2f Game::windowScale = {1,1};
 Vector2u Game::windowSize = {1333, 750};
-// vector<Sprite*> Game::sDraw;
 vector<sf::RectangleShape*> Game::sShadow;
 vector<RectangleShape*> Game::walls;
+Info* Game::info;
 
 int Enemy::direction = RIGHT;
 bool Enemy::collision;
 int Enemy::shots;
+int Enemy::dead;
 
 int main()
 {
+	// cout << 99999 % 50 << '\n';
 	srand(time(0));
 	Game game;
 
@@ -49,8 +58,6 @@ int main()
 		game.render();
 		// ++fps;
 	}
-	// delete playerS;
-	// delete enemy;
 	
 	return 0;
 }

@@ -19,6 +19,8 @@ using std::ostringstream;
 using std::setfill;
 using std::setw;
 using std::stoi;
+using std::ofstream;
+using std::ifstream;
 
 const string fontFile = "data/uni0553-webfont.ttf";
 const string scoreFile = "data/highScore.txt";
@@ -35,9 +37,13 @@ public:
     string buildScoreBoard();
     string buildLivesLevel();
     void buildliveIcons();
+    void setScore(int s);
     void addToScore(int s);
     void sethighScore(int s);
     void setLevel(int l);
+    void incLevel();
+    int getLevel();
+    Text* drawPaused();
     vector<Text*> drawText();
     vector<Sprite*> drawLives();
 
@@ -48,6 +54,7 @@ private:
     unsigned int highScore;
     unsigned int level;
     Font font;
+    Text* paused;
     Text* scoreBoard;
     Text* controls;
     Text* lives_level;

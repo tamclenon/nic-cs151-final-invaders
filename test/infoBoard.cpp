@@ -1,28 +1,30 @@
 #include "infoBoard.h"
 #include "game.h"
-#include <iostream>
-using namespace std;
 
 Info::Info(Player* play)
 {
-    score = 10;
+    player = play;
+    score = 0;
     highScore = 0;
     level = 0;
     loadHighScore();
     font.loadFromFile(fontFile);
+    paused = new Text;
+    paused->setFont(font);
+    paused->setString("Paused\nPress space to play");
+    paused->setPosition({((Game::windowSize.x / 2) - (paused->getGlobalBounds().width / 2)), ((Game::windowSize.y / 2) - (paused->getGlobalBounds().height / 2))});
     scoreBoard = new Text;
     scoreBoard->setFont(font);
     scoreBoard->setString(buildScoreBoard());
     scoreBoard->setPosition({((Game::windowSize.x * PLAYPERCENT) + 20), (10.0f)});
     controls = new Text;
     controls->setFont(font);
-    controls->setString("Controls:\nA to move left\nD to move right.\nSpace to shoot.");
+    controls->setString("Controls:\nA to move left\nD to move right\nSpace to shoot\nP to pause\nR to restart\nEsc to quit");
     controls->setPosition({((Game::windowSize.x * PLAYPERCENT) + 20), (Game::windowSize.y * .3f)});
     lives_level = new Text;
     lives_level->setFont(font);
-    lives_level->setString("Lives: 3\tLevel: 0");
+    lives_level->setString(buildLivesLevel());
     lives_level->setPosition({((Game::windowSize.x * PLAYPERCENT) + 20), (Game::windowSize.y * .8f)});
-    player = play;
     buildliveIcons();
 }
 Info::~Info()
@@ -33,12 +35,14 @@ Info::~Info()
 void Info::update()
 {
     scoreBoard->setString(buildScoreBoard());
-    // lives_level->setString(buildLivesLevel());
-    if (score > highScore)
+    lives_level->setString(buildLivesLevel());
+    while (liveIcons.size() > player->getHealth())
     {
-        highScore = score;
-        saveHighScore();
+        delete liveIcons[liveIcons.size() - 1];
+        liveIcons.pop_back();
     }
+    if (score > highScore)
+        highScore = score;
 }
 
 void Info::loadHighScore()
@@ -69,12 +73,16 @@ string Info::buildLivesLevel()
 }
 void Info::buildliveIcons()
 {
-    for (int i = 0; i < 3; ++i)
+    for (int i = 0; i < player->getHealth(); ++i)
     {
         Sprite* life = new Sprite(PLAYER);
         liveIcons.push_back(life);
         life->setPosition({(lives_level->getPosition().x + (50 * i)), (lives_level->getPosition().y + lives_level->getGlobalBounds().height + 20)});
     }
+}
+void Info::setScore(int s)
+{
+    score = s;
 }
 void Info::addToScore(int s)
 {  
@@ -88,6 +96,14 @@ void Info::setLevel(int l)
 {
     level = l;
 }
+void Info::incLevel()
+{
+    ++level;
+}
+int Info::getLevel()
+{
+    return level;
+}
 vector<Text*> Info::drawText()
 {
     vector<Text*> temp = {scoreBoard, controls, lives_level};
@@ -96,4 +112,8 @@ vector<Text*> Info::drawText()
 vector<Sprite*> Info::drawLives()
 {
     return liveIcons;
+}
+Text* Info::drawPaused()
+{
+    return paused;
 }

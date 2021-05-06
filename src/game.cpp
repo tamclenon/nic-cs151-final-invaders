@@ -13,6 +13,7 @@ Game::Game()
 
     fullScreen = 0;
     isDone = false;
+    isPaused = true;
 
     
     loadWalls();
@@ -35,8 +36,9 @@ void Game::input()
     {
         if ((event.type == Event::Closed) || (event.type == Event::KeyPressed && event.key.code == Keyboard::Escape))
         {
+            info->saveHighScore();
             window.close();
-            isDone = false;
+            isDone = true;
         }
         if (event.type == Event::KeyPressed)
         {
@@ -115,52 +117,92 @@ void Game::input()
                 for (RectangleShape *wall : walls)
                     wall->setFillColor({0,0,0});
             }
+            else if (!isPaused && event.key.code == Keyboard::Space && !(player->bulletExists()))
+            {
+                Bullet* bullet = player->fire();
+                bullets.push_back(bullet);
+                addDraw(bullet);
+            }
+            else if (event.key.code == Keyboard::P && !isPaused)
+                isPaused = true;
+            else if (isPaused && event.key.code == Keyboard::Space)
+                isPaused = false;
+            else if (event.key.code == Keyboard::R)
+                restart();
         }
     }
 }
 
 void Game::update()
 {
-    player->update(this->sDraw);
-    bool swap = enemies[0]->testCollision();
-    for (Enemy* enemy : enemies)
+    if (!isPaused)
     {
-        enemy->update(this->sDraw);
+        for (Bullet* bullet : bullets)
+        {
+            bullet->update(sDraw);
+            if (bullet->getHealth() == 0)
+                bullet = nullptr;
+        }
+        removeDead();
+        player->update();
+        bool swap = enemies[0]->testCollision();
+        for (Enemy* enemy : enemies)
+        {
+            enemy->update();
+            if (enemy->isShoot())
+            {
+                Bullet* bullet = enemy->fire();
+                bullets.push_back(bullet);
+                addDraw(bullet);
+            }
+        }
+        if (swap)
+            enemies[0]->swapTests(enemies);
+        info->update();
+        if (enemies[0]->levelOver())
+        {
+            resetEnemies();
+            info->incLevel();
+            info->addToScore(1000);
+        }
     }
-    if (swap)
-        enemies[0]->swapTests(enemies);
-    info->update();
     input();
 }
 
 void Game::render()
 {
     // window.clear();
-    for (RectangleShape* shadow : sShadow)
+    if (!isPaused)
     {
-        if (shadow != nullptr)
-            window.draw(*shadow);
-    }
-        
-    for (Sprite* sprite : sDraw)
-    {
-        if (sprite != nullptr)
+        for (RectangleShape* shadow : sShadow)
+        {
+            if (shadow != nullptr)
+                window.draw(*shadow);
+        }
+            
+        for (Sprite* sprite : sDraw)
+        {
+            if (sprite != nullptr)
+                window.draw(*sprite);
+        }
+        for (RectangleShape* wall : walls)
+        {
+            if (wall != nullptr)
+                window.draw(*wall);
+        }
+        for (RectangleShape* wall : walls)
+            window.draw(*wall);
+        for (Sprite* sprite : sDraw)
+            window.draw(*sprite);
+        for (Text *text : info->drawText())
+            window.draw(*text);
+        for (Sprite* sprite : info->drawLives())
             window.draw(*sprite);
     }
-    for (RectangleShape* wall : walls)
+    else
     {
-        if (wall != nullptr)
-            window.draw(*wall);
+        window.draw(*info->drawPaused());
     }
-        window.draw(*shadow);
-    for (RectangleShape* wall : walls)
-        window.draw(*wall);
-    for (Sprite* sprite : sDraw)
-        window.draw(*sprite);
-    for (Text *text : info->drawText())
-        window.draw(*text);
-    for (Sprite* sprite : info->drawLives())
-        window.draw(*sprite);
     window.display();
 }
 
@@ -257,6 +299,7 @@ void Game::loadEnemy()
             addDraw(enemy);
         }
     }
+    enemies[0]->swapTests(enemies);
 }
 void Game::loadBarrier()
 {
@@ -271,7 +314,7 @@ void Game::loadBarrier()
                     Vector2f pos = {((windowSize.x * PLAYPERCENT / 5 * set - 40.0f) + (10 * col)), ((windowSize.y * .7f) + (10 * row))};
                     Barrier* barrier = new Barrier(row, col, pos);
                     barriers.push_back(barrier);
-                    sDraw.push_back(barrier);
+                    addDraw(barrier);
                 }
             }
         }
@@ -280,4 +323,58 @@ void Game::loadBarrier()
 void Game::loadInfo()
 {
     info = new Info(player);
+}
+
+void Game::removeDead()
+{
+    int i = 0;
+    while (i < bullets.size())
+    {
+        if (bullets[i] == nullptr || bullets[i]->getHealth() == 0)
+        {
+            bullets[i] = bullets[bullets.size() - 1];
+            bullets.pop_back();
+        }
+        else
+            ++i;
+    }
+    i = 0;
+    while (i < sDraw.size())
+    {
+        if (sDraw[i] == nullptr || sDraw[i]->getHealth() == 0)
+        {
+            if (sDraw[i] != nullptr && sDraw[i]->getType() == ENEMY)
+                enemies[0]->deathCount();
+            sDraw[i] = sDraw[sDraw.size() - 1];
+            sDraw.pop_back();
+        }
+        else
+            ++i;
+    }
+}
+void Game::resetEnemies()
+{
+    int i = 0;
+    for (int row = 0; row < 5; ++row)
+    {
+        for (int col = 0; col < 11; ++col)
+        {
+            enemies[i]->setPosition({col * 60.0f, row * 60.0f});
+            enemies[i]->setColumn(col);
+            enemies[i]->setHealth(1);
+            addDraw(enemies[i]);
+            ++i;
+        }
+    }
+    enemies[0]->swapTests(enemies);
+    enemies[0]->setDirection(RIGHT);
+}
+void Game::restart()
+{
+    resetEnemies();
+    player->setHealth(3);
+    info->setScore(0);
+    info->setLevel(0);
+    for (Bullet* bullet : bullets)
+        bullet->setHealth(0);
 }
