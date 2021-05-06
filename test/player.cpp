@@ -1,6 +1,19 @@
+/**
+ * @file player.cpp
+ * @author Toby Mclenon
+ * @brief Player class definition file
+ * @date 2021-05-06
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include "player.h"
 #include "game.h"
 
+/**
+ * @brief Construct a new Player:: Player object
+ * 
+ */
 Player::Player() : Sprite(PLAYER)
 {
     speed = 5;
@@ -9,12 +22,19 @@ Player::Player() : Sprite(PLAYER)
     bullet = nullptr;
 }
 
+/**
+ * @brief Destroy the Player:: Player object
+ * 
+ */
 Player::~Player()
 {
-    // delete bullet;
-    // bullet = nullptr;
+
 }
 
+/**
+ * @brief Checks for user input and updates player
+ * 
+ */
 void Player::update()
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
@@ -36,12 +56,22 @@ void Player::update()
     }
 }
 
-
+/**
+ * @brief Creates a new member instance of Bullet (fires a bullet)
+ * 
+ * @return Bullet* The Bullet pointer to assign the new bullet to
+ */
 Bullet* Player::fire()
 {
     bullet = new Bullet(getPosition().x + 20, getPosition().y - 50, PLAYER);
     return bullet;
 }
+/**
+ * @brief Checks whether player bullet is still on screen
+ * 
+ * @return true Bullet is on screen
+ * @return false Bullet is not on screen
+ */
 bool Player::bulletExists()
 {
     return bullet != nullptr;

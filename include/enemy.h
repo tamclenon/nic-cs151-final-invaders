@@ -1,3 +1,12 @@
+/**
+ * @file enemy.h
+ * @author Shaun Martin
+ * @brief Enemy class declaration file
+ * @date 2021-05-05
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #ifndef ENEMY_H
 #define ENEMY_H
 #include "spriteRule.h"
@@ -9,6 +18,10 @@
 using std::vector;
 using std::rand;
 
+/**
+ * @brief Enemy class
+ * 
+ */
 class Enemy : public Sprite
 {
 public:

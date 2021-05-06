@@ -1,3 +1,12 @@
+/**
+ * @file spriteRule.h
+ * @author Shaun Martin
+ * @brief Sprite class declaration file
+ * @date 2021-05-05
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #ifndef SPRITERULE_H
 #define SPRITERULE_H
 
@@ -12,6 +21,10 @@ using sf::IntRect;
 using sf::Vector2f;
 using sf::RectangleShape;
 
+/**
+ * @brief Struct for the dimensions of the sprite
+ * 
+ */
 struct spriteDemention
 {
     int sPosX;
@@ -35,7 +48,10 @@ const string SPRITE_TYPES[] = {"player", "enemy", "saucer", "bullet", "barrier",
 const spriteDemention SPRITE_IMAGES[] = {spriteDemention(0,0,50,50), spriteDemention(50,0,50,50), spriteDemention(100,0,50,50), 
                                          spriteDemention(0,50,10,35), spriteDemention(20,50,10,10), spriteDemention(100,50,50,50),
                                          spriteDemention(0,100,50,50), spriteDemention(50,100,1,1), spriteDemention(100,100,50,50)};
-
+/**
+ * @brief Sprite class
+ * 
+ */
 class Sprite : public sf::Sprite
 {
 public:

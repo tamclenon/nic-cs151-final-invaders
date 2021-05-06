@@ -1,4 +1,12 @@
-
+/**
+ * @file game.h
+ * @author Shaun Martin, Toby Mclenon
+ * @brief Game class declaration file
+ * @date 2021-05-05
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #ifndef GAME_H
 #define GAME_H
 
@@ -32,6 +40,10 @@ using sf::RectangleShape;
 enum SIDE {TOP, BOTTOM, LEFT, RIGHT};
 const float PLAYPERCENT = .65;
 
+/**
+ * @brief Game class
+ * 
+ */
 class Game
 {
 public:

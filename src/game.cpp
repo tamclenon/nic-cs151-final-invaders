@@ -1,6 +1,18 @@
+/**
+ * @file game.cpp
+ * @author Game definition file
+ * @brief Shaun Martin, Toby Mclenon
+ * @date 2021-05-06
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include "game.h"
 
-
+/**
+ * @brief Construct a new Game:: Game object
+ * 
+ */
 Game::Game()
 {
     defaultSize = VideoMode(windowSize.x, windowSize.y);
@@ -24,11 +36,19 @@ Game::Game()
     loadInfo();
 }
 
+/**
+ * @brief Destroy the Game:: Game object
+ * 
+ */
 Game::~Game()
 {
 
 }
 
+/**
+ * @brief Checks for user input and makes changes based on input
+ * 
+ */
 void Game::input()
 {
     Event event;
@@ -139,6 +159,11 @@ void Game::input()
     }
 }
 
+/**
+ * @brief Updates the game with all changes made in input section, as
+ *          well as class update functions
+ * 
+ */
 void Game::update()
 {
     if (!isPaused)
@@ -180,6 +205,10 @@ void Game::update()
     input();
 }
 
+/**
+ * @brief Renders all of the sprites
+ * 
+ */
 void Game::render()
 {
     // window.clear();
@@ -217,16 +246,32 @@ void Game::render()
     window.display();
 }
 
+/**
+ * @brief Checks whether the game is done
+ * 
+ * @return true Game is over
+ * @return false Game is not over
+ */
 bool Game::isFinished()
 {
     return (!window.isOpen() || isDone);
 }
 
+/**
+ * @brief Adds the sprite pointer to the vector of sprites to be drawn
+ * 
+ * @param spr The sprite pointer to be added to the vector
+ */
 void Game::addDraw(Sprite* spr)
 {
     sDraw.push_back(spr);
 }
 
+/**
+ * @brief Add walls to the game
+ * 
+ * @param side The side to add the walls to
+ */
 void Game::addWall(int side)
 {
     Vector2f size;
@@ -272,6 +317,12 @@ void Game::addWall(int side)
     wall->setFillColor({0,0,0});
     walls.push_back(wall);
 }
+/**
+ * @brief Adds a shadow to the shadow vector
+ * 
+ * @param pos The position data of the shadow
+ * @param size The size of the shadow
+ */
 void Game::addShadow(const Vector2f &pos, const Vector2f &size)
 {
     RectangleShape* shadow = new RectangleShape(size);
@@ -294,11 +345,19 @@ void Game::loadShadows()
     addShadow({(windowSize.x * PLAYPERCENT),0}, {(windowSize.x * (1 - PLAYPERCENT)),(windowSize.y * .3f)});
     addShadow({(windowSize.x * PLAYPERCENT),(windowSize.y * .8f)}, {(windowSize.x * (1 - PLAYPERCENT)),(windowSize.y * .2f)});
 }
+/**
+ * @brief Initialize a new player sprite
+ * 
+ */
 void Game::loadPlayer()
 {
     player = new Player;
     addDraw(player);
 }
+/**
+ * @brief Initialize enemy sprites
+ * 
+ */
 void Game::loadEnemy()
 {
     for (int row = 0; row < 5; ++row)
@@ -312,6 +371,10 @@ void Game::loadEnemy()
     }
     enemies[0]->swapTests(enemies);
 }
+/**
+ * @brief Initialize barriers
+ * 
+ */
 void Game::loadBarrier()
 {
     for (int set = 1; set <= 4; ++set)
@@ -331,11 +394,19 @@ void Game::loadBarrier()
         }
     }
 }
+/**
+ * @brief initialize the info board
+ * 
+ */
 void Game::loadInfo()
 {
     info = new Info(player);
 }
 
+/**
+ * @brief stop dead enemies from being drawn
+ * 
+ */
 void Game::removeDead()
 {
     int i = 0;
@@ -363,6 +434,10 @@ void Game::removeDead()
             ++i;
     }
 }
+/**
+ * @brief Reinitialize enemies
+ * 
+ */
 void Game::resetEnemies()
 {
     int i = 0;
@@ -380,6 +455,10 @@ void Game::resetEnemies()
     enemies[0]->swapTests(enemies);
     enemies[0]->setDirection(RIGHT);
 }
+/**
+ * @brief Restarts game
+ * 
+ */
 void Game::restart()
 {
     delete info;

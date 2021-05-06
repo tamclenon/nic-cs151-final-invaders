@@ -1,3 +1,12 @@
+/**
+ * @file infoBoard.h
+ * @author Shaun Martin
+ * @brief Information board class declaration file
+ * @date 2021-05-05
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #ifndef INFOBOARD_H
 #define INFOBOARD_H
 
@@ -25,6 +34,10 @@ using std::ifstream;
 const string fontFile = "data/uni0553-webfont.ttf";
 const string scoreFile = "data/highScore.txt";
 
+/**
+ * @brief Class for the information board (lives, score, etc.)
+ * 
+ */
 class Info
 {
 public:

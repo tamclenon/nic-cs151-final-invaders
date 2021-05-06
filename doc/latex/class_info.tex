@@ -1,0 +1,222 @@
+\hypertarget{class_info}{}\doxysection{Info Class Reference}
+\label{class_info}\index{Info@{Info}}
+
+
+Class for the information board (lives, score, etc.)  
+
+
+
+
+{\ttfamily \#include $<$info\+Board.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_info_a5b298922dd39da3dd859680402c00378}{Info}} (\mbox{\hyperlink{class_player}{Player}} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_info}{Info}}\+:\+: \mbox{\hyperlink{class_info}{Info}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_info_a5cc1b412a3c005a5a6db2dcdf73be439}\label{class_info_a5cc1b412a3c005a5a6db2dcdf73be439}} 
+\mbox{\hyperlink{class_info_a5cc1b412a3c005a5a6db2dcdf73be439}{$\sim$\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{class_info}{Info}}\+:\+: \mbox{\hyperlink{class_info}{Info}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_info_a6eed110b7ddcc44440486fd3d4acbc80}\label{class_info_a6eed110b7ddcc44440486fd3d4acbc80}} 
+virtual void \mbox{\hyperlink{class_info_a6eed110b7ddcc44440486fd3d4acbc80}{update}} ()
+\begin{DoxyCompactList}\small\item\em updates the scoreboard, level, and number of player lives \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_info_acfa42583a80177c0978e81052db6a49a}\label{class_info_acfa42583a80177c0978e81052db6a49a}} 
+void \mbox{\hyperlink{class_info_acfa42583a80177c0978e81052db6a49a}{load\+High\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Loads high score. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_info_a7b5241645e0f625a11fce3a7075231b5}\label{class_info_a7b5241645e0f625a11fce3a7075231b5}} 
+void \mbox{\hyperlink{class_info_a7b5241645e0f625a11fce3a7075231b5}{save\+High\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Saves current high score. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_info_a2d18e0b7ed1737901691d823d9e5a0ec}{build\+Score\+Board}} ()
+\begin{DoxyCompactList}\small\item\em Initializes score board. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_info_a9761b57a6e4315640e8de5e6b3c32cd9}{build\+Lives\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Initializes player lives on scoreboard. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_info_aa4fa22aeed50a5a95c36626310919e07}\label{class_info_aa4fa22aeed50a5a95c36626310919e07}} 
+void \mbox{\hyperlink{class_info_aa4fa22aeed50a5a95c36626310919e07}{buildlive\+Icons}} ()
+\begin{DoxyCompactList}\small\item\em Initializes player lives sprites. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_info_aeadd9c2d6ed6df9f6d634be94bf7c8b3}{set\+Score}} (int s)
+\begin{DoxyCompactList}\small\item\em Set the score on the scoreboard. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_info_aae5f1073550b71984d572b6c902ae9de}{add\+To\+Score}} (int s)
+\begin{DoxyCompactList}\small\item\em Adds to the current score. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_info_a26749acbe02c0b8e6bf659114be2dc01}{sethigh\+Score}} (int s)
+\begin{DoxyCompactList}\small\item\em Sets high score. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_info_a8ddbe2f00e290326712781bbb5599aa6}{set\+Level}} (int l)
+\begin{DoxyCompactList}\small\item\em Sets the current level of the game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_info_aa578c101867e406d706b45bfcb1cba1b}\label{class_info_aa578c101867e406d706b45bfcb1cba1b}} 
+void \mbox{\hyperlink{class_info_aa578c101867e406d706b45bfcb1cba1b}{inc\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Increments the level number. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_info_a359ed8e506746bd578af99f5a146dcb4}{get\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Get the current level of the game. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classsf_1_1_text}{Text}} $\ast$ \mbox{\hyperlink{class_info_a5a2e92a33f534a7089291f351bb850ac}{draw\+Paused}} ()
+\begin{DoxyCompactList}\small\item\em Draws the puase screen. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classsf_1_1_text}{Text}} $\ast$ $>$ \mbox{\hyperlink{class_info_af5270e27eee243f0289ab889f211e015}{draw\+Text}} ()
+\begin{DoxyCompactList}\small\item\em Draw the score, life number, and level number. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_sprite}{Sprite}} $\ast$ $>$ \mbox{\hyperlink{class_info_a99e405bd50bb56d6c65a97725149960b}{draw\+Lives}} ()
+\begin{DoxyCompactList}\small\item\em Draw the player life sprites. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for the information board (lives, score, etc.) 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_info_a5b298922dd39da3dd859680402c00378}\label{class_info_a5b298922dd39da3dd859680402c00378}} 
+\index{Info@{Info}!Info@{Info}}
+\index{Info@{Info}!Info@{Info}}
+\doxysubsubsection{\texorpdfstring{Info()}{Info()}}
+{\footnotesize\ttfamily Info\+::\+Info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} $\ast$}]{play }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_info}{Info}}\+:\+: \mbox{\hyperlink{class_info}{Info}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em play} & A pointer to a \mbox{\hyperlink{class_player}{Player}} object \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_info_aae5f1073550b71984d572b6c902ae9de}\label{class_info_aae5f1073550b71984d572b6c902ae9de}} 
+\index{Info@{Info}!addToScore@{addToScore}}
+\index{addToScore@{addToScore}!Info@{Info}}
+\doxysubsubsection{\texorpdfstring{addToScore()}{addToScore()}}
+{\footnotesize\ttfamily void Info\+::add\+To\+Score (\begin{DoxyParamCaption}\item[{int}]{s }\end{DoxyParamCaption})}
+
+
+
+Adds to the current score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The amount to add to the score \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_info_a9761b57a6e4315640e8de5e6b3c32cd9}\label{class_info_a9761b57a6e4315640e8de5e6b3c32cd9}} 
+\index{Info@{Info}!buildLivesLevel@{buildLivesLevel}}
+\index{buildLivesLevel@{buildLivesLevel}!Info@{Info}}
+\doxysubsubsection{\texorpdfstring{buildLivesLevel()}{buildLivesLevel()}}
+{\footnotesize\ttfamily string Info\+::build\+Lives\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes player lives on scoreboard. 
+
+\begin{DoxyReturn}{Returns}
+string \mbox{\hyperlink{class_player}{Player}} lives 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_info_a2d18e0b7ed1737901691d823d9e5a0ec}\label{class_info_a2d18e0b7ed1737901691d823d9e5a0ec}} 
+\index{Info@{Info}!buildScoreBoard@{buildScoreBoard}}
+\index{buildScoreBoard@{buildScoreBoard}!Info@{Info}}
+\doxysubsubsection{\texorpdfstring{buildScoreBoard()}{buildScoreBoard()}}
+{\footnotesize\ttfamily string Info\+::build\+Score\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes score board. 
+
+\begin{DoxyReturn}{Returns}
+string scoreboard 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_info_a99e405bd50bb56d6c65a97725149960b}\label{class_info_a99e405bd50bb56d6c65a97725149960b}} 
+\index{Info@{Info}!drawLives@{drawLives}}
+\index{drawLives@{drawLives}!Info@{Info}}
+\doxysubsubsection{\texorpdfstring{drawLives()}{drawLives()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_sprite}{Sprite}} $\ast$ $>$ Info\+::draw\+Lives (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draw the player life sprites. 
+
+\begin{DoxyReturn}{Returns}
+vector$<$\+Sprite$\ast$$>$ The vector of sprite pointers to draw 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_info_a5a2e92a33f534a7089291f351bb850ac}\label{class_info_a5a2e92a33f534a7089291f351bb850ac}} 
+\index{Info@{Info}!drawPaused@{drawPaused}}
+\index{drawPaused@{drawPaused}!Info@{Info}}
+\doxysubsubsection{\texorpdfstring{drawPaused()}{drawPaused()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsf_1_1_text}{Text}} $\ast$ Info\+::draw\+Paused (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the puase screen. 
+
+\begin{DoxyReturn}{Returns}
+Text$\ast$ The text to be displayed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_info_af5270e27eee243f0289ab889f211e015}\label{class_info_af5270e27eee243f0289ab889f211e015}} 
+\index{Info@{Info}!drawText@{drawText}}
+\index{drawText@{drawText}!Info@{Info}}
+\doxysubsubsection{\texorpdfstring{drawText()}{drawText()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classsf_1_1_text}{Text}} $\ast$ $>$ Info\+::draw\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draw the score, life number, and level number. 
+
+\begin{DoxyReturn}{Returns}
+vector$<$\+Text$\ast$$>$ The vector of text to draw 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_info_a359ed8e506746bd578af99f5a146dcb4}\label{class_info_a359ed8e506746bd578af99f5a146dcb4}} 
+\index{Info@{Info}!getLevel@{getLevel}}
+\index{getLevel@{getLevel}!Info@{Info}}
+\doxysubsubsection{\texorpdfstring{getLevel()}{getLevel()}}
+{\footnotesize\ttfamily int Info\+::get\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the current level of the game. 
+
+\begin{DoxyReturn}{Returns}
+int The current level of the game 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_info_a26749acbe02c0b8e6bf659114be2dc01}\label{class_info_a26749acbe02c0b8e6bf659114be2dc01}} 
+\index{Info@{Info}!sethighScore@{sethighScore}}
+\index{sethighScore@{sethighScore}!Info@{Info}}
+\doxysubsubsection{\texorpdfstring{sethighScore()}{sethighScore()}}
+{\footnotesize\ttfamily void Info\+::sethigh\+Score (\begin{DoxyParamCaption}\item[{int}]{s }\end{DoxyParamCaption})}
+
+
+
+Sets high score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Current high score \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_info_a8ddbe2f00e290326712781bbb5599aa6}\label{class_info_a8ddbe2f00e290326712781bbb5599aa6}} 
+\index{Info@{Info}!setLevel@{setLevel}}
+\index{setLevel@{setLevel}!Info@{Info}}
+\doxysubsubsection{\texorpdfstring{setLevel()}{setLevel()}}
+{\footnotesize\ttfamily void Info\+::set\+Level (\begin{DoxyParamCaption}\item[{int}]{l }\end{DoxyParamCaption})}
+
+
+
+Sets the current level of the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & The level to be set to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_info_aeadd9c2d6ed6df9f6d634be94bf7c8b3}\label{class_info_aeadd9c2d6ed6df9f6d634be94bf7c8b3}} 
+\index{Info@{Info}!setScore@{setScore}}
+\index{setScore@{setScore}!Info@{Info}}
+\doxysubsubsection{\texorpdfstring{setScore()}{setScore()}}
+{\footnotesize\ttfamily void Info\+::set\+Score (\begin{DoxyParamCaption}\item[{int}]{s }\end{DoxyParamCaption})}
+
+
+
+Set the score on the scoreboard. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The score to set the score to \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{info_board_8h}{info\+Board.\+h}}\item 
+test/\mbox{\hyperlink{info_board_8cpp}{info\+Board.\+cpp}}\end{DoxyCompactItemize}
