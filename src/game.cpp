@@ -14,7 +14,7 @@ Game::Game()
     fullScreen = 0;
     isDone = false;
     isPaused = true;
-
+    isOver = false;
     
     loadWalls();
     loadShadows();
@@ -117,11 +117,11 @@ void Game::input()
                 for (RectangleShape *wall : walls)
                     wall->setFillColor({0,0,0});
             }
-            else if (!isPaused && event.key.code == Keyboard::Space && !(player->bulletExists()))
+            else if (isOver && event.key.code == Keyboard::Space)
             {
-                Bullet* bullet = player->fire();
-                bullets.push_back(bullet);
-                addDraw(bullet);
+                restart();
+                isOver = false;
+                isPaused = false;
             }
             else if (event.key.code == Keyboard::P && !isPaused)
                 isPaused = true;
@@ -130,6 +130,12 @@ void Game::input()
             else if (event.key.code == Keyboard::R)
                 restart();
         }
+    }
+    if (!isPaused && Keyboard::isKeyPressed(Keyboard::Space) && !(player->bulletExists()))
+    {
+        Bullet* bullet = player->fire();
+        bullets.push_back(bullet);
+        addDraw(bullet);
     }
 }
 
@@ -164,6 +170,11 @@ void Game::update()
             resetEnemies();
             info->incLevel();
             info->addToScore(1000);
+        }
+        if (player->getHealth() <= 0)
+        {
+            isPaused = true;
+            isOver = true;
         }
     }
     input();
@@ -341,7 +352,7 @@ void Game::removeDead()
     i = 0;
     while (i < sDraw.size())
     {
-        if (sDraw[i] == nullptr || sDraw[i]->getHealth() == 0)
+        if (sDraw[i] == nullptr || (sDraw[i]->getHealth() == 0 && sDraw[i]->getType() != PLAYER))
         {
             if (sDraw[i] != nullptr && sDraw[i]->getType() == ENEMY)
                 enemies[0]->deathCount();
@@ -377,4 +388,12 @@ void Game::restart()
     info->setLevel(0);
     for (Bullet* bullet : bullets)
         bullet->setHealth(0);
+    for (Barrier* barrier : barriers)
+    {
+        if (barrier->getHealth() <= 0)
+        {
+            barrier->setHealth(1);
+            addDraw(barrier);
+        }
+    }
 }

@@ -75,6 +75,7 @@ private:
     vector<Bullet*> bullets;
     vector<Barrier*> barriers;
     bool isPaused;
+    bool isOver;
 };
 
 
